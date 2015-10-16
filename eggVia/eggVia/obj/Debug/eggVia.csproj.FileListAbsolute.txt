@@ -1,0 +1,12 @@
+c:\users\kk2\documents\visual studio 2015\Projects\eggVia\eggVia\bin\Debug\eggVia.exe.config
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\bin\Debug\eggVia.exe
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\bin\Debug\eggVia.pdb
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\bin\Debug\EloBuddy.dll
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\bin\Debug\SharpDX.dll
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\obj\Debug\eggVia.csprojResolveAssemblyReference.cache
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\obj\Debug\eggVia.exe
+C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\obj\Debug\eggVia.pdb
