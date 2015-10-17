@@ -12,6 +12,7 @@ using Color = System.Drawing.Color;
 
 namespace eggVia.Modes
 {
+
     class Casts : Model
     {
         public static int[] WLargura = {400, 500, 600, 700, 800};
@@ -26,5 +27,7 @@ namespace eggVia.Modes
 
             
         }
+
+
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using eggVia.Modes;
+using eggVia.Utils;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
@@ -75,16 +77,24 @@ namespace eggVia.Core
                         if (pred.HitChance >= HitChance.High && QMissle == null)
                             Q.Cast(pred.CastPosition);
                     }
-                    if (W.IsReady() && RMissle != null)
+                    if (W.IsReady())
                     {
-                        var pos = target.Position;
-                        if (target.IsFacing(_Player) == false) // ou !target.IsFacing(_Player) tanto faz não funciona msmo
+                        if (_Player.CountEnemiesInRange(W.Range) <
+                            EntityManager.Heroes.Allies.Where(i => i.Distance(_Player) <= W.Range).ToList().Count)
+                            W.Cast(target.ServerPosition);
+
+                       if (RMissle != null)
                         {
-                            Chat.Print("aeee");
-                            W.Cast(pos.Extend(_Player.Position, -0x64).To3D());
+                            var pos = target.Position;
+                            if (!target.IsFacing2(_Player))
+                                // ou !target.IsFacing(_Player) tanto faz não funciona msmo
+                            {
+                                Chat.Print("aeee");
+                                W.Cast(pos.Extend(_Player.Position, -0x64).To3D());
+                            }
                         }
                     }
-                    if (target.HasBuff("Chilled") && E.IsReady() ||
+                    if (target.HasBuffUntil("Chilled", _Player.Distance(target) / 0x352) && E.IsReady() ||
                         _Player.GetSpellDamage(target, SpellSlot.E) >= target.Health)
                     {
                         E.Cast(target);
@@ -106,7 +116,7 @@ namespace eggVia.Core
                     if (pred.HitChance >= HitChance.High && QMissle == null)
                         Q.Cast(pred.CastPosition);
                 }
-                if (E.IsReady() && target.HasBuff("Chilled") ||
+                if (E.IsReady() && target.HasBuffUntil("Chilled", _Player.Distance(target) / 0x352) ||
                     _Player.GetSpellDamage(target, SpellSlot.E) >= target.Health)
                 {
                     E.Cast(target);
