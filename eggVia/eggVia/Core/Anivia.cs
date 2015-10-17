@@ -17,19 +17,20 @@ namespace eggVia.Core
             GameObject.OnDelete += OnDelete;
             Interrupter.OnInterruptableSpell += InTerrupter;
             Gapcloser.OnGapcloser += OnGapCloser;
+            //Drawing.OnDraw += Casts.OnEndDraw;
             Game.OnTick += OnTick;
         }
 
         private static void OnGapCloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs e)
         {
             if (!sender.IsEnemy || sender.IsDead || sender.IsZombie) return;
-            if (sender.IsValidTarget(300) && Q.IsReady())
+            if (sender.IsValidTarget(0x12c) && Q.IsReady())
             {
                 Q.Cast(sender);
             }
             else if (W.IsReady() && sender.IsValidTarget(W.Range))
             {
-                W.Cast(sender.Position.Extend(_Player.Position, -50).To3D()); // facing? gapcloser ofc lel
+                W.Cast(sender.Position.Extend(_Player.Position, -0x32).To3D()); // facing? gapcloser ofc lel
             }
         }
 
@@ -38,13 +39,13 @@ namespace eggVia.Core
             if (!sender.IsEnemy || sender.IsDead || sender.IsZombie) return;
             if (W.IsReady() && sender.IsValidTarget(W.Range))
             {
-                W.Cast(sender);
+                W.Cast(sender.Position.Extend(_Player.Position, - 0x32).To3D());
             }
         }
 
         private static void OnTick(EventArgs args)
         {
-            if (Q.IsReady() && QMissle != null && QMissle.Position.CountEnemiesInRange(200) > 0)
+            if (Q.IsReady() && QMissle != null && QMissle.Position.CountEnemiesInRange(0xc8) > 0)
                 Q.Cast(QMissle.Position);
             if (Orbwalker.ActiveModesFlags.Equals(Orbwalker.ActiveModes.Combo))
             {
@@ -56,7 +57,7 @@ namespace eggVia.Core
                         R.Cast(target.ServerPosition);
                     }
                     if (R.IsReady() && RMissle != null && !target.IsDead && !target.IsZombie &&
-                        RMissle.Position.CountEnemiesInRange(450) == 0)
+                        RMissle.Position.CountEnemiesInRange(0x1c2) == 0)
                     {
                         R.Cast(RMissle.Position);
                     }
@@ -70,9 +71,11 @@ namespace eggVia.Core
                     if (W.IsReady() && RMissle != null)
                     {
                         var pos = target.Position;
-                        W.Cast(target.IsFacing(_Player)
-                            ? pos.Extend(_Player.Position, -100).To3D()
-                            : pos.Extend(_Player.Position, -150).To3D());
+                        if (target.IsFacing(_Player) == false) // ou !target.IsFacing(_Player) tanto faz não funciona msmo
+                        {
+                            Chat.Print("aeee");
+                            W.Cast(pos.Extend(_Player.Position, -0x64).To3D());
+                        }
                     }
                     if (target.HasBuff("Chilled") && E.IsReady() ||
                         _Player.GetSpellDamage(target, SpellSlot.E) >= target.Health)
@@ -80,7 +83,7 @@ namespace eggVia.Core
                         E.Cast(target);
                     }
                     if (_Player.GetSummonerSpellDamage(target, DamageLibrary.SummonerSpells.Ignite) >= target.Health &&
-                        _Player.Distance(target) <= 600)
+                        _Player.Distance(target) <= 0x258)
                     {
                         _Player.Spellbook.CastSpell(Ignite, target);
                     }
@@ -109,6 +112,10 @@ namespace eggVia.Core
             if (Orbwalker.ActiveModesFlags.Equals(Orbwalker.ActiveModes.Flee))
             {
                 Flee.useFee();
+            }
+            if (Orbwalker.ActiveModesFlags.Equals(Orbwalker.ActiveModes.LastHit))
+            {
+                LastHit.useLH();
             }
         }
 

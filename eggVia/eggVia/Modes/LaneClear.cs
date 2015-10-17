@@ -9,7 +9,6 @@ namespace eggVia.Modes
     internal class LaneClear : Model
     {
         public static void useLC()
-            // TODO desativar o R quando tiver < minions DENTRO do RObject^.^ ai fica top
         {
             var minions =
                 EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, _Player.Position, E.Range,
@@ -35,7 +34,9 @@ namespace eggVia.Modes
             }
             if (R.IsReady() && RMissle != null)
             {
-                if (m.Count() < 2 || _Player.ManaPercent <= 20)
+                var minR =
+                    EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.Distance(RMissle.Position) <= R.Width);
+                if (minR.Count() < 2 || _Player.ManaPercent <= 20)
                 {
                     R.Cast(RMissle.Position);
                 }
