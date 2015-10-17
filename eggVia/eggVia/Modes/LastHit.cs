@@ -15,8 +15,8 @@ namespace eggVia.Modes
         {
             var m = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, _Player.Position,
                 E.Range).OrderByDescending(x => x.MaxHealth).FirstOrDefault();
-            if (m == null) return;
-            if (_Player.GetSpellDamage(m, SpellSlot.E) >= m.Health && !Orbwalker.IsAutoAttacking)
+            if (m == null || Orbwalker.IsAutoAttacking || Orbwalker.CanAutoAttack) return;
+            if (_Player.GetSpellDamage(m, SpellSlot.E) >= m.Health)
             {
                 E.Cast(m);
             }

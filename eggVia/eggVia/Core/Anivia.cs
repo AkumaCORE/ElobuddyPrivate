@@ -30,7 +30,7 @@ namespace eggVia.Core
             }
             else if (W.IsReady() && sender.IsValidTarget(W.Range))
             {
-                W.Cast(sender.Position.Extend(_Player.Position, -0x32).To3D()); // facing? gapcloser ofc lel
+                W.Cast(e.End); // facing? gapcloser ofc lel
             }
         }
 

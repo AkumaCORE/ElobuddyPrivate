@@ -19,7 +19,7 @@ namespace eggVia.Modes
             if (minions == null) return;
             if ((_Player.GetSpellDamage(minions, SpellSlot.E) >= minions.Health) ||
                 (minions.HasBuff("Chilled") && _Player.GetSpellDamage(minions, SpellSlot.E) >= minions.Health*2) &&
-                !Orbwalker.IsAutoAttacking)
+                (!Orbwalker.IsAutoAttacking || !Orbwalker.CanAutoAttack))
             {
                 E.Cast(minions);
             }

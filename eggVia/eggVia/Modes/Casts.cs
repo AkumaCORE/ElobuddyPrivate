@@ -15,7 +15,7 @@ namespace eggVia.Modes
     class Casts : Model
     {
         public static int[] WLargura = {400, 500, 600, 700, 800};
-
+        // TODO auto desativar ult, quando não tiver heroi/minion sem hotkey pressionada
         public static void OnEndDraw(EventArgs args)
         {
             var mPos = Game.CursorPos;
