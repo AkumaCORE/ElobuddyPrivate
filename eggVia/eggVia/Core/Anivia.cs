@@ -30,7 +30,7 @@ namespace eggVia.Core
             }
             else if (W.IsReady() && sender.IsValidTarget(W.Range))
             {
-                W.Cast(e.End); // facing? gapcloser ofc lel
+                W.Cast(e.End);
             }
         }
 
@@ -39,7 +39,14 @@ namespace eggVia.Core
             if (!sender.IsEnemy || sender.IsDead || sender.IsZombie) return;
             if (W.IsReady() && sender.IsValidTarget(W.Range))
             {
-                W.Cast(sender.Position.Extend(_Player.Position, - 0x32).To3D());
+                if (sender.HasBuff("Recall") || sender.HasBuff("Teleport"))
+                {
+                    W.Cast(sender.ServerPosition);
+                }
+                else if (e.DangerLevel == DangerLevel.High)
+                {
+                    W.Cast(sender.ServerPosition);
+                }
             }
         }
 
