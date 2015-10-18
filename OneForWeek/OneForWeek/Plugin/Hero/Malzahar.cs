@@ -7,6 +7,8 @@ using EloBuddy.SDK.Events;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using EloBuddy.SDK.Rendering;
+using OneForWeek.Draw.Notifications;
+using OneForWeek.Model.Notification;
 using OneForWeek.Util.Misc;
 using SharpDX;
 
@@ -21,6 +23,11 @@ namespace OneForWeek.Plugin.Hero
         public static GameObject WMissle;
 
         private bool ultimateON = false;
+
+        public Malzahar()
+        {
+            Init();
+        }
 
         public void Init()
         {
@@ -44,6 +51,9 @@ namespace OneForWeek.Plugin.Hero
             GameObject.OnDelete += GameObjectOnDelete;
             Game.OnUpdate += OnGameUpdate;
             Drawing.OnDraw += OnDraw;
+
+            Notification.DrawNotification(new NotificationModel(Game.Time, 10f, 1f, ObjectManager.Player.ChampionName + " Injected.", System.Drawing.Color.Purple));
+            Notification.DrawNotification(new NotificationModel(Game.Time, 10f, 1f," Addon By Vector", System.Drawing.Color.Green));
         }
 
         public void InitMenu()
@@ -349,7 +359,7 @@ namespace OneForWeek.Plugin.Hero
 
         }
 
-        private static float PossibleDamage(Obj_AI_Base target)//s
+        private static float PossibleDamage(Obj_AI_Base target)
         {
             var damage = 0f;
             if (R.IsReady())
