@@ -1,0 +1,14 @@
+C:\Users\Gabriel\Documents\OneForWeek\OneForWeek\OneForWeek\bin\Debug\OneForWeek.exe.config
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\bin\Debug\OneForWeek.exe.config
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\bin\Debug\OneForWeek.exe
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\bin\Debug\OneForWeek.pdb
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\bin\Debug\EloBuddy.dll
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\bin\Debug\SharpDX.dll
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\obj\Debug\OneForWeek.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\obj\Debug\OneForWeek.Properties.Resources.resources
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\obj\Debug\OneForWeek.csproj.GenerateResource.Cache
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\obj\Debug\OneForWeek.exe
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\obj\Debug\OneForWeek.pdb
