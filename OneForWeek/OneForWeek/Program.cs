@@ -5,12 +5,14 @@ using EloBuddy.SDK.Events;
 using OneForWeek.Draw.Notifications;
 using OneForWeek.Model.Notification;
 using OneForWeek.Plugin;
+using OneForWeek.Plugin.Hero;
 
 namespace OneForWeek
 {
     class Program
     {
         public static PluginModel Champion;
+
         static void Main(string[] args)
         {
             Loading.OnLoadingComplete += OnLoadCompleted;
@@ -23,7 +25,6 @@ namespace OneForWeek
                 /*
                 var handle = System.Reflection.Assembly.GetExecutingAssembly().CreateInstance("OneForWeek.Plugin.Hero." + ObjectManager.Player.ChampionName);
                 Champion = (PluginModel)handle;
-
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 MsgPrinter printer = assembly.CreateInstance("Test.MsgPrinter") as MsgPrinter;
                 */
@@ -34,8 +35,6 @@ namespace OneForWeek
             {
                 Notification.DrawNotification(new NotificationModel(Game.Time, 20f, 1f, ObjectManager.Player.ChampionName + " is Not Supported", Color.Red));
             }
-
         }
-
     }
 }

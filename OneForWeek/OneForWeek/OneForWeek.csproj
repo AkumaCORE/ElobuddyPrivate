@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B01EBD8F-8DF4-4A71-9B69-63F36578DE9F}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OneForWeek</RootNamespace>
     <AssemblyName>OneForWeek</AssemblyName>
@@ -32,21 +32,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EloBuddy">
-      <HintPath>..\..\..\..\..\..\..\EloBuddy\System\EloBuddy.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\EloBuddy.Loader.Complete\System\EloBuddy.dll</HintPath>
     </Reference>
     <Reference Include="EloBuddy.SDK">
-      <HintPath>..\..\..\..\..\..\..\EloBuddy\System\EloBuddy.SDK.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\EloBuddy.Loader.Complete\System\EloBuddy.SDK.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>..\..\..\..\..\..\..\EloBuddy\System\SharpDX.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\EloBuddy.Loader.Complete\System\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct3D9">
-      <HintPath>..\..\..\..\..\..\..\EloBuddy\System\SharpDX.Direct3D9.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\EloBuddy.Loader.Complete\System\SharpDX.Direct3D9.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,7 +61,8 @@
     <Compile Include="Model\ActionQueue\ActionQueueItem.cs" />
     <Compile Include="Model\ActionQueue\ActionQueueList.cs" />
     <Compile Include="Model\Notification\NotificationModel.cs" />
-    <Compile Include="Plugin\Hero\Katarina.cs" />
+    <Compile Include="Plugin\Hero\Cassiopeia.cs" />
+    <Compile Include="Plugin\Hero\Malzahar.cs" />
     <Compile Include="Plugin\IChampion.cs" />
     <Compile Include="Plugin\PluginModel.cs" />
     <Compile Include="Program.cs" />
@@ -75,13 +73,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Util\ActionManager\ActionManager.cs" />
+    <Compile Include="Util\Misc\MEC.cs" />
+    <Compile Include="Util\Misc\Misc.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Util\Misc\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
