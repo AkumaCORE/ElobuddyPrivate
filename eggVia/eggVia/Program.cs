@@ -1,5 +1,6 @@
 ﻿using System;
 using eggVia.Core;
+using EloBuddy;
 using EloBuddy.SDK.Events;
 
 namespace eggVia
@@ -13,6 +14,7 @@ namespace eggVia
 
         private static void LoadingComplete(EventArgs args)
         {
+            if (ObjectManager.Player.ChampionName.ToLower() != "anivia") return;
             Anivia.Init();
         }
     }

@@ -15,12 +15,11 @@ namespace eggVia.Core
         public static Spell.Skillshot R;
         public static GameObject QMissle, RMissle;
         public static SpellSlot Ignite;
-
         /* Menu */
 
         public static Menu AniviaMenu;
-
         /* Misc */
+
 
         public static AIHeroClient _Player
         {
