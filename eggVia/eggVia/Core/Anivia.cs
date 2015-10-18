@@ -27,10 +27,11 @@ namespace eggVia.Core
 
         private static void GameOnOnNotify(GameNotifyEventArgs args)
         {
-            if (args.NetworkId == _Player.NetworkId && args.EventId == GameEventId.OnDie)
+            if (args.EventId == GameEventId.OnChampionKill)
             {
-                if (args.NetworkId != _Player.NetworkId && args.EventId == GameEventId.OnChampionKill)
+                if (args.NetworkId == _Player.NetworkId)
                 {
+                    Chat.Print("Matou viado!");
                     Chat.Say("/masterybadge");
                 }
             }
@@ -67,7 +68,7 @@ namespace eggVia.Core
 
         private static void OnTick(EventArgs args)
         {
-            if (Q.IsReady() && QMissle != null && QMissle.Position.CountEnemiesInRange(0xc8) > 0)
+            if (Q.IsReady() && QMissle != null && QMissle.Position.CountEnemiesInRange(0xb4) > 0) 
                 Q.Cast(QMissle.Position);
             if (Orbwalker.ActiveModesFlags.Equals(Orbwalker.ActiveModes.Combo))
             {
