@@ -349,7 +349,7 @@ namespace OneForWeek.Plugin.Hero
 
         }
 
-        private static float PossibleDamage(Obj_AI_Base target)
+        private static float PossibleDamage(Obj_AI_Base target)//s
         {
             var damage = 0f;
             if (R.IsReady())
