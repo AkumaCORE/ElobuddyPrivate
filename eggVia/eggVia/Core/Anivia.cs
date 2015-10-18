@@ -20,13 +20,25 @@ namespace eggVia.Core
             Interrupter.OnInterruptableSpell += InTerrupter;
             Gapcloser.OnGapcloser += OnGapCloser;
             Game.OnUpdate += LevelUP.Game_OnUpdate;
+            Game.OnNotify += GameOnOnNotify;
             //Drawing.OnDraw += Casts.OnEndDraw;
             Game.OnTick += OnTick;
         }
 
+        private static void GameOnOnNotify(GameNotifyEventArgs args)
+        {
+            if (args.NetworkId == _Player.NetworkId && args.EventId == GameEventId.OnDie)
+            {
+                if (args.NetworkId != _Player.NetworkId && args.EventId == GameEventId.OnChampionKill)
+                {
+                    Chat.Say("/masterybadge");
+                }
+            }
+        }
+
         private static void OnGapCloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs e)
         {
-            if (!sender.IsEnemy || sender.IsDead || sender.IsZombie) return;
+            if (!sender.IsEnemy || sender.IsDead || sender.IsZombie || sender.IsAlly) return;
             if (sender.IsValidTarget(0x12c) && Q.IsReady())
             {
                 Q.Cast(sender);
@@ -39,7 +51,7 @@ namespace eggVia.Core
 
         private static void InTerrupter(Obj_AI_Base sender, Interrupter.InterruptableSpellEventArgs e)
         {
-            if (!sender.IsEnemy || sender.IsDead || sender.IsZombie) return;
+            if (!sender.IsEnemy || sender.IsDead || sender.IsZombie || sender.IsAlly) return;
             if (W.IsReady() && sender.IsValidTarget(W.Range))
             {
                 if (sender.HasBuff("Recall") || sender.HasBuff("Teleport"))
@@ -69,7 +81,7 @@ namespace eggVia.Core
                     if (R.IsReady() && RMissle != null && !target.IsDead && !target.IsZombie &&
                         RMissle.Position.CountEnemiesInRange(0x1c2) == 0)
                     {
-                        R.Cast(RMissle.Position);
+                        Player.CastSpell(SpellSlot.R, RMissle.Position);
                     }
 
                     if (Q.IsReady())
@@ -84,18 +96,17 @@ namespace eggVia.Core
                             EntityManager.Heroes.Allies.Where(i => i.Distance(_Player) <= W.Range).ToList().Count)
                             W.Cast(target.ServerPosition);
 
-                       if (RMissle != null)
+                        if (RMissle != null)
                         {
                             var pos = target.Position;
                             if (!target.IsFacing2(_Player))
-                                // ou !target.IsFacing(_Player) tanto faz não funciona msmo
                             {
                                 Chat.Print("aeee");
                                 W.Cast(pos.Extend(_Player.Position, -0x64).To3D());
                             }
                         }
                     }
-                    if (target.HasBuffUntil("Chilled", _Player.Distance(target) / 0x352) && E.IsReady() ||
+                    if (target.HasBuffUntil("Chilled", _Player.Distance(target)/0x352) && E.IsReady() ||
                         _Player.GetSpellDamage(target, SpellSlot.E) >= target.Health)
                     {
                         E.Cast(target);
@@ -117,7 +128,7 @@ namespace eggVia.Core
                     if (pred.HitChance >= HitChance.High && QMissle == null)
                         Q.Cast(pred.CastPosition);
                 }
-                if (E.IsReady() && target.HasBuffUntil("Chilled", _Player.Distance(target) / 0x352) ||
+                if (E.IsReady() && target.HasBuffUntil("Chilled", _Player.Distance(target)/0x352) ||
                     _Player.GetSpellDamage(target, SpellSlot.E) >= target.Health)
                 {
                     E.Cast(target);

@@ -38,7 +38,8 @@ namespace eggVia.Modes
                     EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => x.Distance(RMissle.Position) <= R.Width);
                 if (minR.Count() < 2 || _Player.ManaPercent <= 20)
                 {
-                    R.Cast(RMissle.Position);
+                    //   R.Cast(RMissle.Position);
+                    Player.CastSpell(SpellSlot.R, RMissle.Position);
                 }
             }
         }

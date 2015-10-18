@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using eggVia.Core;
 using EloBuddy;
 using EloBuddy.SDK;
 
 namespace eggVia.Modes
 {
-    class LastHit : Model
+    internal class LastHit : Model
     {
         public static void useLH()
         {
