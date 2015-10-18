@@ -19,6 +19,7 @@ namespace eggVia.Core
             GameObject.OnDelete += OnDelete;
             Interrupter.OnInterruptableSpell += InTerrupter;
             Gapcloser.OnGapcloser += OnGapCloser;
+            Game.OnUpdate += LevelUP.Game_OnUpdate;
             //Drawing.OnDraw += Casts.OnEndDraw;
             Game.OnTick += OnTick;
         }
