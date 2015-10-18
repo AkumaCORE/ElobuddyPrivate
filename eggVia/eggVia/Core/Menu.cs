@@ -16,6 +16,7 @@ namespace eggVia.Core
             {
                 _Player.SetSkinId(SkinHax.CurrentValue);
             };
+            _Player.SetSkinId(SkinHax.CurrentValue);
         }
     }
 }

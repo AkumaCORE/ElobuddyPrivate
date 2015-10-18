@@ -31,8 +31,8 @@ namespace eggVia.Core
             {
                 if (args.NetworkId == _Player.NetworkId)
                 {
-                    Chat.Print("Matou viado!");
-                    Chat.Say("/masterybadge");
+                    Chat.Say("/l"); // rir
+                    Chat.Say("/masterybadge"); // mostrar a maestria LEK
                 }
             }
         }
