@@ -67,6 +67,36 @@ namespace BRSelector.Model
             }
         }
 
+        public static int GetPriority(string name)
+        {
+            try
+            {
+                var item = HPrio.FirstOrDefault(i => i.Champions.Contains(name));
+                if (item != null)
+                {
+                    return item.Danger;
+                }
+            }
+            catch (Exception ex)
+            {
+                Chat.Print(ex);
+            }
+            return 4; // baixo se nada né lek
+        }
+
+        public static IEnumerable<Targets.Heroes> OrderChampions(List<Targets.Heroes> heroes)
+        {
+            try
+            {
+                return heroes.OrderByDescending(x => GetPriority(x.Hero.ChampionName));
+            }
+            catch (Exception ex)
+            {
+                Chat.Print(ex);
+            }
+            return new List<Targets.Heroes>();
+        } 
+
         public static HashSet<Heroes> HPrio { get; private set; }
 
         public class Heroes
