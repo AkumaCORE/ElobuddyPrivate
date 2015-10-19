@@ -49,11 +49,15 @@
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Selector.cs" />
+    <Compile Include="Helpers\Invulnerable.cs" />
+    <Compile Include="Model\Targets.cs" />
+    <Compile Include="Model\TargetSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\SocketServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Draw\" />
+    <Folder Include="Helpers\" />
     <Folder Include="Model\" />
     <Folder Include="Util\" />
   </ItemGroup>
