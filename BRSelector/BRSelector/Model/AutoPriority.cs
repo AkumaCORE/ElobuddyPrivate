@@ -101,7 +101,7 @@ namespace BRSelector.Model
         {
             try
             {
-                return heroes.OrderByDescending(x => GetPriority(x.Hero.ChampionName)).ThenBy(x => x.Hero.Health); ;
+                return heroes.OrderByDescending(x => GetPriority(x.Hero.ChampionName)).ThenBy(x => x.Hero.Health); 
             }
             catch (Exception ex)
             {

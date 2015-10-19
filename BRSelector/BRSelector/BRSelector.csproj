@@ -62,6 +62,8 @@
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\AutoPriority.cs" />
+    <Compile Include="Model\Humanizer.cs" />
+    <Compile Include="Model\Selected.cs" />
     <Compile Include="Model\ServerModels\GameStatics.cs" />
     <Compile Include="Model\ServerModels\PlayerDamage.cs" />
     <Compile Include="Selector.cs" />
