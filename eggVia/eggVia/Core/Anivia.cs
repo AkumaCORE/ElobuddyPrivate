@@ -15,6 +15,7 @@ namespace eggVia.Core
         {
             Spells.setSpells();
             MenuX.getMenu();
+            Hacks.RenderWatermark = false;
             GameObject.OnCreate += OnCreate;
             GameObject.OnDelete += OnDelete;
             Interrupter.OnInterruptableSpell += InTerrupter;
@@ -29,10 +30,12 @@ namespace eggVia.Core
         {
             if (args.EventId == GameEventId.OnChampionKill)
             {
-                if (args.NetworkId == _Player.NetworkId)
+                var killer = ObjectManager.GetUnitByNetworkId<Obj_AI_Base>(args.NetworkId);
+                
+                if (killer.IsMe)
                 {
-                    Chat.Say("/l"); // rir
                     Chat.Say("/masterybadge"); // mostrar a maestria LEK
+                    EloBuddy.SDK.Core.DelayAction(() => Chat.Say("/l"), 0x3e8);
                 }
             }
         }
@@ -80,7 +83,7 @@ namespace eggVia.Core
                         R.Cast(target.ServerPosition);
                     }
                     if (R.IsReady() && RMissle != null && !target.IsDead && !target.IsZombie &&
-                        RMissle.Position.CountEnemiesInRange(0x1c2) == 0)
+                        RMissle.Position.CountEnemiesInRange(0x1c2) == 0x0)
                     {
                         Player.CastSpell(SpellSlot.R, RMissle.Position);
                     }

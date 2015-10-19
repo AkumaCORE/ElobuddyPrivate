@@ -10,6 +10,3 @@ C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\bin\Debug\Newto
 C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\obj\Debug\eggVia.csprojResolveAssemblyReference.cache
 C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\obj\Debug\eggVia.exe
 C:\Users\Kk2\documents\visual studio 2015\Projects\eggVia\eggVia\obj\Debug\eggVia.pdb
-C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\eggVia\eggVia\bin\Debug\eggVia.exe.config
-C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\eggVia\eggVia\obj\Debug\eggVia.exe
-C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\eggVia\eggVia\obj\Debug\eggVia.pdb

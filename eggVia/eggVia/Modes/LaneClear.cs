@@ -40,6 +40,7 @@ namespace eggVia.Modes
                 {
                     //   R.Cast(RMissle.Position);
                     Player.CastSpell(SpellSlot.R, RMissle.Position);
+                   // Player.CastSpell(SpellSlot.R, _Player.Position);
                 }
             }
         }
