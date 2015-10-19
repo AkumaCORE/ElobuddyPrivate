@@ -35,14 +35,14 @@ namespace BRSelector.Model
             return false;
         }
 
-        private static IEnumerable<Targets.Heroes> GetOrderedChampions (List<Targets.Heroes> heroes)
+        private static IEnumerable<Targets.Heroes> GetOrderedChampions(List<Targets.Heroes> heroes)
         {
             try
             {
                 switch (Mode)
                 {
-                    case 0: // auto prio
-                        return AutoPriority.OrderChampions(heroes);
+                    case 0: // Auto Priority
+                        return AutoPriority.OrderChampionsWithHealh(heroes);
                     case 1: // less attack?
                         return heroes.OrderBy(x => x.Hero.Health/ObjectManager.Player.TotalAttackDamage);
                     case 2: // MOST AP?
@@ -57,6 +57,8 @@ namespace BRSelector.Model
                         return heroes.OrderBy(x => x.Hero.Health/ObjectManager.Player.TotalMagicalDamage);
                     case 7: // MAIS SEM VIDA
                         return heroes.OrderBy(x => x.Hero.Health);
+                    case 8:
+                        return AutoPriority.OrderChampions(heroes);
                 }
             }
             catch (Exception ex)

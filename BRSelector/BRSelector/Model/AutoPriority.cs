@@ -95,7 +95,20 @@ namespace BRSelector.Model
                 Chat.Print(ex);
             }
             return new List<Targets.Heroes>();
-        } 
+        }
+
+        public static IEnumerable<Targets.Heroes> OrderChampionsWithHealh(List<Targets.Heroes> heroes)
+        {
+            try
+            {
+                return heroes.OrderByDescending(x => GetPriority(x.Hero.ChampionName)).ThenBy(x => x.Hero.Health); ;
+            }
+            catch (Exception ex)
+            {
+                Chat.Print(ex);
+            }
+            return new List<Targets.Heroes>();
+        }
 
         public static HashSet<Heroes> HPrio { get; private set; }
 
