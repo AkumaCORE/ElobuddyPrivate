@@ -12,7 +12,7 @@ namespace BRSelector.Model
 {
     class Selected
     {
-        static Selected()
+        internal static Selected()
         {
             ClickBuffer = 100f;
             Game.OnWndProc += OnGameWndProc;
