@@ -10,9 +10,9 @@ using SharpDX;
 
 namespace BRSelector.Model
 {
-    class Selected
+   internal class Selected
     {
-        internal static Selected()
+        static Selected()
         {
             ClickBuffer = 100f;
             Game.OnWndProc += OnGameWndProc;
