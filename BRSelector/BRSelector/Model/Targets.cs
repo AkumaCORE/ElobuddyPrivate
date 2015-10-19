@@ -24,7 +24,7 @@ namespace BRSelector.Model
             }
             catch (Exception ex)
             {
-                Chat.Print(ex);
+                Console.WriteLine(ex);
             }
         }
 
@@ -40,7 +40,7 @@ namespace BRSelector.Model
             }
             catch (Exception ex)
             {
-                Chat.Print(ex);
+                Console.WriteLine(ex);
             }
         }
 

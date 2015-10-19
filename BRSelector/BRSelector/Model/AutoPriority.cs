@@ -63,7 +63,7 @@ namespace BRSelector.Model
             }
             catch (Exception ex)
             {
-                Chat.Print(ex);
+                Console.WriteLine(ex);
             }
         }
 
@@ -79,7 +79,7 @@ namespace BRSelector.Model
             }
             catch (Exception ex)
             {
-                Chat.Print(ex);
+                Console.WriteLine(ex);
             }
             return 4; // baixo se nada né lek
         }
@@ -92,7 +92,7 @@ namespace BRSelector.Model
             }
             catch (Exception ex)
             {
-                Chat.Print(ex);
+                Console.WriteLine(ex);
             }
             return new List<Targets.Heroes>();
         }
@@ -105,7 +105,7 @@ namespace BRSelector.Model
             }
             catch (Exception ex)
             {
-                Chat.Print(ex);
+                Console.WriteLine(ex);
             }
             return new List<Targets.Heroes>();
         }

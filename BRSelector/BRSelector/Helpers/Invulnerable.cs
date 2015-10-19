@@ -56,7 +56,7 @@ namespace BRSelector.Helpers
             }
             catch (Exception ex)
             {
-                Chat.Print(ex);
+                Console.WriteLine(ex);
             }
             return false;
         }
@@ -75,7 +75,7 @@ namespace BRSelector.Helpers
             }
             catch (Exception ex)
             {
-                Chat.Print(ex);
+                Console.WriteLine(ex);
             }
             return false;
         }

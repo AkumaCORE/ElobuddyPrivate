@@ -30,7 +30,7 @@ namespace BRSelector.Model
             }
             catch (Exception ex)
             {
-                Chat.Print(ex);
+                Console.WriteLine(ex);
             }
             return false;
         }
@@ -57,13 +57,13 @@ namespace BRSelector.Model
                         return heroes.OrderBy(x => x.Hero.Health/ObjectManager.Player.TotalMagicalDamage);
                     case 7: // MAIS SEM VIDA
                         return heroes.OrderBy(x => x.Hero.Health);
-                    case 8:
+                    case 8: // Prioridade jovem? EOQ
                         return AutoPriority.OrderChampions(heroes);
                 }
             }
             catch (Exception ex)
             {
-                Chat.Print(ex);
+                Console.WriteLine(ex);
             }
             return new List<Targets.Heroes>();
         } 
