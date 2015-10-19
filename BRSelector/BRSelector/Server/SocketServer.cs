@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BRSelector.Model.ServerModels;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Web.Script.Serialization;
 
 namespace BRSelector.Server
 {
@@ -113,11 +115,13 @@ namespace BRSelector.Server
                 // Check for end-of-file tag. If it is not there, read 
                 // more data.
                 content = state.sb.ToString();
-                if (content.IndexOf("<EOF>") > -1)
+                if (content.IndexOf("READ<EOF>") > -1)
                 {
-                    // All the data has been read from the 
-                    // client. Display it on the console.
-                    Console.WriteLine("Read {0} bytes from socket. \n Data : {1}",
+                    var gameStatistics = new GameStatics();
+
+                    var json = new JavaScriptSerializer().Serialize(new GameStatics());
+
+                    Console.WriteLine("Read {0} bytes from socket. \n Request : {1}",
                         content.Length, content);
                     // Echo the data back to the client.
                     Send(handler, content);

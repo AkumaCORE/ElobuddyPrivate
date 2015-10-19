@@ -30,9 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EloBuddy">
+      <HintPath>..\..\..\..\..\..\..\EloBuddy\System\EloBuddy.dll</HintPath>
+    </Reference>
+    <Reference Include="EloBuddy.SDK">
+      <HintPath>..\..\..\..\..\..\..\EloBuddy\System\EloBuddy.SDK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +55,8 @@
     <Compile Include="External\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\ServerModels\GameStatics.cs" />
+    <Compile Include="Model\ServerModels\PlayerDamage.cs" />
     <Compile Include="Selector.cs" />
     <Compile Include="Helpers\Invulnerable.cs" />
     <Compile Include="Model\Targets.cs" />
@@ -57,8 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Draw\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Model\" />
     <Folder Include="Util\" />
   </ItemGroup>
   <ItemGroup>
