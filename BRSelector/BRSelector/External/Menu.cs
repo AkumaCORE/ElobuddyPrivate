@@ -8,5 +8,15 @@ namespace BRSelector.External
         {
             InitializeComponent();
         }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

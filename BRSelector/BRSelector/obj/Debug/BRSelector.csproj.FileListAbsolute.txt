@@ -10,3 +10,8 @@ C:\Users\Kk2\Documents\priv8\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRS
 C:\Users\Kk2\Documents\priv8\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.csproj.GenerateResource.Cache
 C:\Users\Kk2\Documents\priv8\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.dll
 C:\Users\Kk2\Documents\priv8\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.pdb
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.External.Menu.resources
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.csproj.GenerateResource.Cache
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.dll
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.pdb
