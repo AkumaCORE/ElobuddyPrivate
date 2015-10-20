@@ -10,6 +10,7 @@
         NearMouse = 5,
         LessCast = 6,
         LessHealth = 7,
-        Priority = 8
+        Priority = 8,
+        Points = 9
     }
 }

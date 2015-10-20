@@ -27,7 +27,7 @@ namespace BRSelector
         {
             MenuExterno = new External.Menu();
 
-            MenuExterno.ShowDialog();
+            //MenuExterno.ShowDialog();
 
             menuTs = MainMenu.AddMenu("BR Selector", "BrSelector");
 

@@ -3,7 +3,7 @@ using EloBuddy.SDK.Menu.Values;
 
 namespace BRSelector.Util
 {
-    static class Misc
+    public static class Misc
     {
         public static bool IsChecked(Menu obj, string value)
         {

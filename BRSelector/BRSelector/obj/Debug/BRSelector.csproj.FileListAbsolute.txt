@@ -15,3 +15,6 @@ C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelec
 C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.csproj.GenerateResource.Cache
 C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.dll
 C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\obj\Debug\BRSelector.pdb
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\bin\Debug\BRSelector.dll
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\bin\Debug\BRSelector.pdb
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\BRSelector\BRSelector\bin\Debug\Newtonsoft.Json.dll
