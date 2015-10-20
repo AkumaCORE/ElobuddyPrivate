@@ -64,6 +64,7 @@
     <Compile Include="Model\AutoPriority.cs" />
     <Compile Include="Model\Enum\EnumSelectorType.cs" />
     <Compile Include="Model\Humanizer.cs" />
+    <Compile Include="Model\Points.cs" />
     <Compile Include="Model\Selected.cs" />
     <Compile Include="Model\ServerModels\GameStatics.cs" />
     <Compile Include="Model\ServerModels\PlayerDamage.cs" />

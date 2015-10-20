@@ -118,6 +118,8 @@ namespace BRSelector.Model
                         return heroes.OrderBy(x => x.Hero.Health);
                     case EnumSelectorType.Priority: // Prioridade jovem? EOQ
                         return AutoPriority.OrderChampions(heroes);
+                    case 9: // MODO DE PONTO NADA ROBADO RLX
+                        return Points.OrderChampions(heroes);
                 }
             }
             catch (Exception ex)

@@ -51,6 +51,7 @@ namespace BRSelector.Model
             }
             public AIHeroClient Hero { get; private set; }
             public float LastVisibleChange { get; set; }
+            public float Value { get; set; }
             public bool Visible { get; set; }
         }
     }
