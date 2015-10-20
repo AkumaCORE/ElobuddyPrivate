@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BRSelector.Helpers;
+using BRSelector.Model.Enum;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Enumerations;
 using SharpDX;
 
 namespace BRSelector.Model
@@ -100,25 +98,25 @@ namespace BRSelector.Model
         {
             try
             {
-                switch (Mode)
+                switch ((EnumSelectorType)Mode)
                 {
-                    case 0: // Auto Priority
+                    case EnumSelectorType.AutoPriority: // Auto Priority
                         return AutoPriority.OrderChampionsWithHealh(heroes);
-                    case 1: // less attack?
+                    case EnumSelectorType.LessAttack: // less attack?
                         return heroes.OrderBy(x => x.Hero.Health/ObjectManager.Player.TotalAttackDamage);
-                    case 2: // MOST AP?
+                    case EnumSelectorType.MostAP: // MOST AP?
                         return heroes.OrderBy(x => x.Hero.TotalMagicalDamage);
-                    case 3: // MOST AD ?
+                    case EnumSelectorType.MostAD: // MOST AD ?
                         return heroes.OrderBy(x => x.Hero.TotalAttackDamage);
-                    case 4: // PERTIN
+                    case EnumSelectorType.Closest: // PERTIN
                         return heroes.OrderBy(x => x.Hero.Distance(ObjectManager.Player));
-                    case 5: // PERTO DO MAUSEÇ 
+                    case EnumSelectorType.NearMouse: // PERTO DO MAUSEÇ 
                         return heroes.OrderBy(x => x.Hero.Distance(Game.CursorPos));
-                    case 6: // LESS CASTERINO?
+                    case EnumSelectorType.LessCast: // LESS CASTERINO?
                         return heroes.OrderBy(x => x.Hero.Health/ObjectManager.Player.TotalMagicalDamage);
-                    case 7: // MAIS SEM VIDA
+                    case EnumSelectorType.LessHealth: // MAIS SEM VIDA
                         return heroes.OrderBy(x => x.Hero.Health);
-                    case 8: // Prioridade jovem? EOQ
+                    case EnumSelectorType.Priority: // Prioridade jovem? EOQ
                         return AutoPriority.OrderChampions(heroes);
                 }
             }

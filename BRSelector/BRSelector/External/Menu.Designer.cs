@@ -1,11 +1,14 @@
-﻿namespace BRSelector.External
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace BRSelector.External
 {
     partial class Menu
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -241,21 +244,21 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TrackBar trackBar5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TrackBar trackBar4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private Label label1;
+        private Label label2;
+        private CheckedListBox checkedListBox1;
+        private ListBox listBox1;
+        private Label label3;
+        private Label label4;
+        private Panel panel1;
+        private Label label8;
+        private TrackBar trackBar5;
+        private Label label7;
+        private TrackBar trackBar4;
+        private Label label6;
+        private TrackBar trackBar3;
+        private Label label5;
+        private TrackBar trackBar2;
+        private TrackBar trackBar1;
     }
 }

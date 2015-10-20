@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EloBuddy;
+using BRSelector.Util;
 
 namespace BRSelector.Model
 {
@@ -25,7 +23,7 @@ namespace BRSelector.Model
                             "Orianna", "Quinn", "Sivir", "Syndra", "Talon", "Teemo", "Tristana", "TwistedFate",
                             "Twitch", "Varus", "Vayne", "Veigar", "VelKoz", "Viktor", "Xerath", "Zed", "Ziggs"
                         },
-                        Danger = 1
+                        Danger = 4
                     },
                     new Heroes()
                     {
@@ -35,7 +33,7 @@ namespace BRSelector.Model
                                 "Kassadin", "Kayle", "Kha'Zix", "Lissandra", "Mordekaiser", "Nidalee", "Riven", "Shaco",
                                 "Vladimir", "Yasuo", "Zilean", "Kindred"
                         },
-                        Danger = 2
+                        Danger = 3
                     },
                     new Heroes()
                     {
@@ -45,7 +43,7 @@ namespace BRSelector.Model
                                 "Lee Sin", "Maokai", "Morgana", "Nocturne", "Pantheon", "Poppy", "Rengar", "Rumble",
                                 "Ryze", "Swain", "Trundle", "Tryndamere", "Udyr", "Urgot", "Vi", "XinZhao", "RekSai"
                         },
-                        Danger = 3
+                        Danger = 2
                     },
                     new Heroes()
                     {
@@ -57,7 +55,7 @@ namespace BRSelector.Model
                                 "Sion", "Skarner", "Sona", "Soraka", "Taric", "Thresh", "Volibear", "Warwick",
                                 "MonkeyKing", "Yorick", "Zac", "Zyra", "Tahm Kench"
                         },
-                        Danger = 4
+                        Danger = 1
                     }
                 };
             }
@@ -81,14 +79,27 @@ namespace BRSelector.Model
             {
                 Console.WriteLine(ex);
             }
-            return 4; // baixo se nada né lek
+            return 1; // baixo se nada né lek
+        }
+
+        public static int GetPriorityOverride(string name)
+        {
+            try
+            {
+                return Misc.GetSliderValue(Selector.SelectorMenu, "ts" + name);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return 1; // baixo se nada né lek
         }
 
         public static IEnumerable<Targets.Heroes> OrderChampions(List<Targets.Heroes> heroes)
         {
             try
             {
-                return heroes.OrderByDescending(x => GetPriority(x.Hero.ChampionName));
+                return heroes.OrderBy(x => GetPriorityOverride(x.Hero.ChampionName));
             }
             catch (Exception ex)
             {
@@ -101,7 +112,7 @@ namespace BRSelector.Model
         {
             try
             {
-                return heroes.OrderByDescending(x => GetPriority(x.Hero.ChampionName)).ThenBy(x => x.Hero.Health); 
+                return heroes.OrderBy(x => GetPriorityOverride(x.Hero.ChampionName)).ThenBy(x => x.Hero.Health); 
             }
             catch (Exception ex)
             {
