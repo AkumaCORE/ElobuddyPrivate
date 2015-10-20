@@ -10,7 +10,7 @@ using SharpDX;
 
 namespace BRSelector.Model
 {
-    class Selected
+   internal class Selected
     {
         static Selected()
         {
