@@ -75,7 +75,7 @@ namespace eggVia.Core
                 Q.Cast(QMissle.Position);
             if (Orbwalker.ActiveModesFlags.Equals(Orbwalker.ActiveModes.Combo))
             {
-                var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
+                var target = TargetSelector.TargetSelector.GetTarget(Q.Range, DamageType.Magical);
                 if (target != null)
                 {
                     if (R.IsReady() && RMissle == null)
@@ -124,7 +124,7 @@ namespace eggVia.Core
             }
             if (Orbwalker.ActiveModesFlags.Equals(Orbwalker.ActiveModes.Harass))
             {
-                var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
+                var target = TargetSelector.TargetSelector.GetTarget(Q.Range, DamageType.Magical);
                 if (target == null) return;
                 if (Q.IsReady() && target.Distance(_Player.Position) <= E.Range && E.IsLearned)
                 {

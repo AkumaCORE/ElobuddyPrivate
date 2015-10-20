@@ -8,7 +8,7 @@ namespace eggVia.Modes
     {
         public static void useFee()
         {
-            var t = TargetSelector.GetTarget(W.Range, DamageType.Magical);
+            var t = TargetSelector.TargetSelector.GetTarget(W.Range, DamageType.Magical);
             if (t == null) return;
             if (W.IsReady())
             {
