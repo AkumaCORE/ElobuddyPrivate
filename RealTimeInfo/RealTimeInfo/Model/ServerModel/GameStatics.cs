@@ -1,0 +1,47 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using EloBuddy;
+using EloBuddy.SDK;
+
+namespace RealTimeInfo.Model.ServerModel
+{
+    class GameStatics
+    {
+        public float EnemyTeamGold { get; set; }
+        public float AllyTeamGold { get; set; }
+        public List<PlayerDamage> PlayersDamage = new List<PlayerDamage>();
+
+        protected readonly List<AIHeroClient> Allies = EntityManager.Heroes.Allies;
+        protected readonly List<AIHeroClient> Enemies = EntityManager.Heroes.Enemies;
+
+        public GameStatics()
+        {
+            EnemyTeamGold = EnemyTeamGoldFunc();
+            AllyTeamGold = AllyTeamGoldFunc();
+            PlayersDamageListFill();
+        }
+
+        private void PlayersDamageListFill()
+        {
+            foreach (var hero in Enemies)
+            {
+                PlayersDamage.Add(new PlayerDamage(hero.ChampionName, hero.TotalAttackDamage + hero.TotalMagicalDamage));
+            }
+
+            foreach (var hero in Allies)
+            {
+                PlayersDamage.Add(new PlayerDamage(hero.ChampionName, hero.TotalAttackDamage + hero.TotalMagicalDamage));
+            }
+        }
+
+        private float AllyTeamGoldFunc()
+        {
+            return Allies.Sum(hero => hero.GoldTotal);
+        }
+
+        private float EnemyTeamGoldFunc()
+        {
+            return Enemies.Sum(hero => hero.GoldTotal);
+        }
+    }
+}
