@@ -9,9 +9,10 @@ using SharpDX;
 
 namespace BRSelector.Model
 {
-    public static class TargetSelector
+    public static class AdvancedTargetSelector
     {
         public static int Mode { get; set; }
+
         internal static bool IsValidTarget(AIHeroClient target, 
             float range, 
             DamageType damageType,

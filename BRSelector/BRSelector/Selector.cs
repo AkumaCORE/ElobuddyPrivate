@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using BRSelector.Model;
 using BRSelector.Model.Enum;
 using BRSelector.Util;
-using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
-using SharpDX;
-using TargetSelector = BRSelector.Model.TargetSelector;
 
 namespace BRSelector
 {
@@ -149,15 +145,6 @@ namespace BRSelector
                 counter++;
             }
             MenuExterno.Show();
-        }
-
-        public static AIHeroClient GetTarget(float range,
-            DamageType damageType = DamageType.True,
-            bool ignoreShields = true,
-            Vector3 from = default(Vector3),
-            IEnumerable<AIHeroClient> ignoredChampions = null)
-        {
-            return TargetSelector.GetTarget(range, damageType, ignoreShields, from,ignoredChampions);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace BRSelector.Model
         {
             ClickBuffer = 100f;
             Game.OnWndProc += OnGameWndProc;
+            Drawing.OnDraw += OnDraw;
         }
         public static float ClickBuffer { get; set; }
         public static AIHeroClient Target { get; set; }
@@ -22,7 +23,7 @@ namespace BRSelector.Model
             try
             {
                 if (Target != null &&
-                    TargetSelector.IsValidTarget(
+                    AdvancedTargetSelector.IsValidTarget(
                         Target, range, damageType, ignoreShields, from))
                 {
                     return Target;
@@ -35,11 +36,10 @@ namespace BRSelector.Model
             return null;
         }
 
-        private static void OnDrawingDraw(EventArgs args)
+        private static void OnDraw(EventArgs args)
         {
             try
             {
-
                 if (Target != null && Target.IsValidTarget() && Target.Position.IsOnScreen())
                 {
                     Drawing.DrawCircle(Target.Position, 150, Color.Red);
@@ -67,7 +67,7 @@ namespace BRSelector.Model
                         .FirstOrDefault();
 
                 // quando tiver um menu ficar melhor nele neh parsa
-                Drawing.OnDraw += OnDrawingDraw;
+                Drawing.OnDraw += OnDraw;
             }
             catch (Exception ex)
             {
