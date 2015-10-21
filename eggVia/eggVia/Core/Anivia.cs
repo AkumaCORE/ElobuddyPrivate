@@ -75,7 +75,7 @@ namespace eggVia.Core
                 Q.Cast(QMissle.Position);
             if (Orbwalker.ActiveModesFlags.Equals(Orbwalker.ActiveModes.Combo))
             {
-                var target = TargetSelector.TargetSelector.GetTarget(Q.Range, DamageType.Magical);
+                var target = TargetSelector.TargetSelector.GetTarget(R.Range, DamageType.Magical);
                 if (target != null)
                 {
                     if (R.IsReady() && RMissle == null)
@@ -98,7 +98,7 @@ namespace eggVia.Core
                     {
                         if (_Player.CountEnemiesInRange(W.Range) <
                             EntityManager.Heroes.Allies.Where(i => i.Distance(_Player) <= W.Range).ToList().Count)
-                            W.Cast(target.ServerPosition);
+                            W.Cast(target.ServerPosition.Shorten(_Player.Position, 100));
 
                         if (RMissle != null)
                         {
