@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using BRSelector;
+using BRSelector.Model;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
@@ -32,6 +34,7 @@ namespace OneForWeek.Plugin.Hero
         public void Init()
         {
             InitVariables();
+            Selector.Init();
         }
 
         public void InitVariables()
@@ -102,7 +105,7 @@ namespace OneForWeek.Plugin.Hero
 
         public void OnCombo()
         {
-            var target = TargetSelector.GetTarget(R.Range + 400, DamageType.Magical);
+            var target = AdvancedTargetSelector.GetTarget(1000, DamageType.Magical);
 
             if (target == null || !target.IsValidTarget(Q.Range)) return;
 

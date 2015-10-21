@@ -12,3 +12,4 @@ C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForW
 C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\obj\Debug\OneForWeek.csproj.GenerateResource.Cache
 C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\obj\Debug\OneForWeek.exe
 C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\obj\Debug\OneForWeek.pdb
+C:\Users\Gabriel\Documents\GitHubVisualStudio\ElobuddyPrivate\OneForWeek\OneForWeek\obj\Debug\OneForWeek.BRSelector.Menu.resources

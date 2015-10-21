@@ -31,8 +31,9 @@ namespace OneForWeek
                 var handle = Activator.CreateInstance(null, "OneForWeek.Plugin.Hero." + ObjectManager.Player.ChampionName);
                 Champion = (PluginModel)handle.Unwrap();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.StackTrace);
                 Notification.DrawNotification(new NotificationModel(Game.Time, 20f, 1f, ObjectManager.Player.ChampionName + " is Not Supported", Color.Red));
             }
         }

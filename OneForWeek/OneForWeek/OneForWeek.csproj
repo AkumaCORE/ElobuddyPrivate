@@ -48,6 +48,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,6 +58,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BRSelector\AdvancedTargetSelector.cs" />
+    <Compile Include="BRSelector\AutoPriority.cs" />
+    <Compile Include="BRSelector\EnumSelectorType.cs" />
+    <Compile Include="BRSelector\GameStatics.cs" />
+    <Compile Include="BRSelector\Humanizer.cs" />
+    <Compile Include="BRSelector\Invulnerable.cs" />
+    <Compile Include="BRSelector\Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BRSelector\Menu.Designer.cs" />
+    <Compile Include="BRSelector\Misc.cs" />
+    <Compile Include="BRSelector\PlayerDamage.cs" />
+    <Compile Include="BRSelector\Points.cs" />
+    <Compile Include="BRSelector\Selected.cs" />
+    <Compile Include="BRSelector\Selector.cs" />
+    <Compile Include="BRSelector\SocketServer.cs" />
+    <Compile Include="BRSelector\Targets.cs" />
     <Compile Include="Draw\Notifications\Notification.cs" />
     <Compile Include="Model\ActionQueue\ActionQueueItem.cs" />
     <Compile Include="Model\ActionQueue\ActionQueueList.cs" />
@@ -81,6 +99,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="BRSelector\Menu.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
