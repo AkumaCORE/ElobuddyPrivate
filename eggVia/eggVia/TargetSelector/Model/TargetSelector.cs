@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using eggVia.TargetSelector;
+using BRSelector.Helpers;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
 using SharpDX;
 
-namespace eggVia.TargetSelector
+namespace BRSelector.Model
 {
     class TargetSelector
     {
@@ -98,7 +98,6 @@ namespace eggVia.TargetSelector
 
         private static IEnumerable<Targets.Heroes> GetOrderedChampions(List<Targets.Heroes> heroes)
         {
-            Mode = 9;
             try
             {
                 switch (Mode)
@@ -121,8 +120,6 @@ namespace eggVia.TargetSelector
                         return heroes.OrderBy(x => x.Hero.Health);
                     case 8: // Prioridade jovem? EOQ
                         return AutoPriority.OrderChampions(heroes);
-                    case 9: // MODO DE PONTO NADA ROBADO RLX
-                        return Points.OrderChampions(heroes);
                 }
             }
             catch (Exception ex)
