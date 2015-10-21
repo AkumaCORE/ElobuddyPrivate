@@ -6,7 +6,7 @@ using EloBuddy.SDK;
 
 namespace BRSelector.Model
 {
-    internal  class Targets
+    internal class Targets
     {
         static Targets()
         {

@@ -33,17 +33,17 @@ namespace BRSelector.External
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.selectorType = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.champion1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.champion5 = new System.Windows.Forms.Label();
             this.trackBar5 = new System.Windows.Forms.TrackBar();
-            this.label7 = new System.Windows.Forms.Label();
+            this.champion4 = new System.Windows.Forms.Label();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
-            this.label6 = new System.Windows.Forms.Label();
+            this.champion3 = new System.Windows.Forms.Label();
             this.trackBar3 = new System.Windows.Forms.TrackBar();
-            this.label5 = new System.Windows.Forms.Label();
+            this.champion2 = new System.Windows.Forms.Label();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.showTarget = new System.Windows.Forms.CheckBox();
@@ -75,10 +75,10 @@ namespace BRSelector.External
             this.label2.TabIndex = 1;
             this.label2.Text = "By KK2 & Vector";
             // 
-            // listBox1
+            // selectorType
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
+            this.selectorType.FormattingEnabled = true;
+            this.selectorType.Items.AddRange(new object[] {
             "AutoPriority",
             "LessAttack",
             "MostAP ",
@@ -87,12 +87,13 @@ namespace BRSelector.External
             "NearMouse",
             "LessCast",
             "LessHealth",
-            "Priority"});
-            this.listBox1.Location = new System.Drawing.Point(12, 103);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(332, 69);
-            this.listBox1.TabIndex = 4;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            "Priority",
+            "Points"});
+            this.selectorType.Location = new System.Drawing.Point(12, 103);
+            this.selectorType.Name = "selectorType";
+            this.selectorType.Size = new System.Drawing.Size(332, 69);
+            this.selectorType.TabIndex = 4;
+            this.selectorType.SelectedIndexChanged += new System.EventHandler(this.selectorType_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -103,24 +104,24 @@ namespace BRSelector.External
             this.label3.TabIndex = 5;
             this.label3.Text = "Selector Type";
             // 
-            // label4
+            // champion1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 196);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Champion 1";
+            this.champion1.AutoSize = true;
+            this.champion1.Location = new System.Drawing.Point(16, 196);
+            this.champion1.Name = "champion1";
+            this.champion1.Size = new System.Drawing.Size(63, 13);
+            this.champion1.TabIndex = 7;
+            this.champion1.Text = "Champion 1";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.champion5);
             this.panel1.Controls.Add(this.trackBar5);
-            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.champion4);
             this.panel1.Controls.Add(this.trackBar4);
-            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.champion3);
             this.panel1.Controls.Add(this.trackBar3);
-            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.champion2);
             this.panel1.Controls.Add(this.trackBar2);
             this.panel1.Controls.Add(this.trackBar1);
             this.panel1.Location = new System.Drawing.Point(12, 178);
@@ -128,86 +129,91 @@ namespace BRSelector.External
             this.panel1.Size = new System.Drawing.Size(330, 295);
             this.panel1.TabIndex = 14;
             // 
-            // label8
+            // champion5
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 237);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 13);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Champion 5";
+            this.champion5.AutoSize = true;
+            this.champion5.Location = new System.Drawing.Point(4, 237);
+            this.champion5.Name = "champion5";
+            this.champion5.Size = new System.Drawing.Size(63, 13);
+            this.champion5.TabIndex = 15;
+            this.champion5.Text = "Champion 5";
             // 
             // trackBar5
             // 
             this.trackBar5.AutoSize = false;
             this.trackBar5.Location = new System.Drawing.Point(2, 255);
-            this.trackBar5.Maximum = 5;
+            this.trackBar5.Maximum = 3;
             this.trackBar5.Name = "trackBar5";
             this.trackBar5.Size = new System.Drawing.Size(326, 35);
             this.trackBar5.TabIndex = 14;
+            this.trackBar5.Scroll += new System.EventHandler(this.trackBar5_Scroll);
             // 
-            // label7
+            // champion4
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 181);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Champion 4";
+            this.champion4.AutoSize = true;
+            this.champion4.Location = new System.Drawing.Point(4, 181);
+            this.champion4.Name = "champion4";
+            this.champion4.Size = new System.Drawing.Size(63, 13);
+            this.champion4.TabIndex = 13;
+            this.champion4.Text = "Champion 4";
             // 
             // trackBar4
             // 
             this.trackBar4.AutoSize = false;
             this.trackBar4.Location = new System.Drawing.Point(1, 199);
-            this.trackBar4.Maximum = 5;
+            this.trackBar4.Maximum = 3;
             this.trackBar4.Name = "trackBar4";
             this.trackBar4.Size = new System.Drawing.Size(326, 35);
             this.trackBar4.TabIndex = 12;
+            this.trackBar4.Scroll += new System.EventHandler(this.trackBar4_Scroll);
             // 
-            // label6
+            // champion3
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 124);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Champion 3";
+            this.champion3.AutoSize = true;
+            this.champion3.Location = new System.Drawing.Point(4, 124);
+            this.champion3.Name = "champion3";
+            this.champion3.Size = new System.Drawing.Size(63, 13);
+            this.champion3.TabIndex = 11;
+            this.champion3.Text = "Champion 3";
             // 
             // trackBar3
             // 
             this.trackBar3.AutoSize = false;
             this.trackBar3.Location = new System.Drawing.Point(2, 143);
-            this.trackBar3.Maximum = 5;
+            this.trackBar3.Maximum = 3;
             this.trackBar3.Name = "trackBar3";
             this.trackBar3.Size = new System.Drawing.Size(326, 35);
             this.trackBar3.TabIndex = 10;
+            this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
             // 
-            // label5
+            // champion2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 68);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Champion 2";
+            this.champion2.AutoSize = true;
+            this.champion2.Location = new System.Drawing.Point(4, 68);
+            this.champion2.Name = "champion2";
+            this.champion2.Size = new System.Drawing.Size(63, 13);
+            this.champion2.TabIndex = 9;
+            this.champion2.Text = "Champion 2";
             // 
             // trackBar2
             // 
             this.trackBar2.AutoSize = false;
             this.trackBar2.Location = new System.Drawing.Point(2, 86);
-            this.trackBar2.Maximum = 5;
+            this.trackBar2.Maximum = 3;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(326, 35);
             this.trackBar2.TabIndex = 8;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // trackBar1
             // 
             this.trackBar1.AutoSize = false;
             this.trackBar1.Location = new System.Drawing.Point(2, 35);
-            this.trackBar1.Maximum = 5;
+            this.trackBar1.Maximum = 3;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(326, 35);
-            this.trackBar1.TabIndex = 6;
+            this.trackBar1.TabIndex = 0;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // showTarget
             // 
@@ -218,26 +224,29 @@ namespace BRSelector.External
             this.showTarget.TabIndex = 15;
             this.showTarget.Text = "Show Target";
             this.showTarget.UseVisualStyleBackColor = true;
+            this.showTarget.CheckedChanged += new System.EventHandler(this.showTarget_CheckedChanged);
             // 
             // drawForcedTarget
             // 
             this.drawForcedTarget.AutoSize = true;
-            this.drawForcedTarget.Location = new System.Drawing.Point(15, 53);
+            this.drawForcedTarget.Location = new System.Drawing.Point(109, 30);
             this.drawForcedTarget.Name = "drawForcedTarget";
             this.drawForcedTarget.Size = new System.Drawing.Size(121, 17);
             this.drawForcedTarget.TabIndex = 16;
             this.drawForcedTarget.Text = "Draw Forced Target";
             this.drawForcedTarget.UseVisualStyleBackColor = true;
+            this.drawForcedTarget.CheckedChanged += new System.EventHandler(this.drawForcedTarget_CheckedChanged);
             // 
             // forceSelectedTarget
             // 
             this.forceSelectedTarget.AutoSize = true;
-            this.forceSelectedTarget.Location = new System.Drawing.Point(109, 30);
+            this.forceSelectedTarget.Location = new System.Drawing.Point(16, 53);
             this.forceSelectedTarget.Name = "forceSelectedTarget";
             this.forceSelectedTarget.Size = new System.Drawing.Size(132, 17);
             this.forceSelectedTarget.TabIndex = 17;
             this.forceSelectedTarget.Text = "Force Selected Target";
             this.forceSelectedTarget.UseVisualStyleBackColor = true;
+            this.forceSelectedTarget.CheckedChanged += new System.EventHandler(this.forceSelectedTarget_CheckedChanged);
             // 
             // Menu
             // 
@@ -247,9 +256,9 @@ namespace BRSelector.External
             this.Controls.Add(this.forceSelectedTarget);
             this.Controls.Add(this.drawForcedTarget);
             this.Controls.Add(this.showTarget);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.champion1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.selectorType);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -271,17 +280,17 @@ namespace BRSelector.External
 
         public Label label1;
         public Label label2;
-        public ListBox listBox1;
+        public ListBox selectorType;
         public Label label3;
-        public Label label4;
+        public Label champion1;
         public Panel panel1;
-        public Label label8;
+        public Label champion5;
         public TrackBar trackBar5;
-        public Label label7;
+        public Label champion4;
         public TrackBar trackBar4;
-        public Label label6;
+        public Label champion3;
         public TrackBar trackBar3;
-        public Label label5;
+        public Label champion2;
         public TrackBar trackBar2;
         public TrackBar trackBar1;
         public CheckBox showTarget;

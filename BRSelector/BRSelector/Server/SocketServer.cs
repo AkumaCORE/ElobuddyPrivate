@@ -167,10 +167,9 @@ namespace BRSelector.Server
         }
 
 
-        public static int Main(String[] args)
+        public static void StartSocketServer()
         {
             StartListening();
-            return 0;
         }
     }
 }

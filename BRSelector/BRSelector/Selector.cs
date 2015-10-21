@@ -18,16 +18,9 @@ namespace BRSelector
 
         internal static readonly string Version = "1.0.0";
 
-        static Selector()
-        {
-            Init();    
-        }
-
-        static void Init()
+        public static void Init()
         {
             MenuExterno = new External.Menu();
-
-            //MenuExterno.ShowDialog();
 
             menuTs = MainMenu.AddMenu("BR Selector", "BrSelector");
 
@@ -35,31 +28,62 @@ namespace BRSelector
             menuTs.AddSeparator();
             menuTs.AddLabel("By KK2 and Vector");
 
+            /*
+                Draw menu
+            */
+
             DrawMenu = menuTs.AddSubMenu("Draws", "Draw");
+
+            /*
+                Draw Target Checkbox
+            */
+
             var drawTarget = DrawMenu.Add("drawTarget", new CheckBox("Show target", true));
+            MenuExterno.showTarget.Checked = drawTarget.CurrentValue;
             drawTarget.OnValueChange += delegate
             {
                 MenuExterno.showTarget.Checked = Misc.IsChecked(DrawMenu, "drawTarget");
             };
 
+            /*
+                Draw Forced Target Checkbox
+            */
+
             var drawForcedTarget = DrawMenu.Add("drawForcedTarget", new CheckBox("Mark forced target", true));
+            MenuExterno.drawForcedTarget.Checked = drawForcedTarget.CurrentValue;
             drawForcedTarget.OnValueChange += delegate
             {
                 MenuExterno.drawForcedTarget.Checked = Misc.IsChecked(DrawMenu, "drawForcedTarget");
             };
 
+
+            /*
+                Selector Menu
+            */
+
             SelectorMenu = menuTs.AddSubMenu("Selector", "Selector");
             var forceTarget = SelectorMenu.Add("forceTarget", new CheckBox("Force Selected Target", true));
+            MenuExterno.forceSelectedTarget.Checked = forceTarget.CurrentValue;
             forceTarget.OnValueChange += delegate
             {
-                MenuExterno.forceSelectedTarget.Checked = Misc.IsChecked(DrawMenu, "forceTarget");
+                MenuExterno.forceSelectedTarget.Checked = Misc.IsChecked(SelectorMenu, "forceTarget");
             };
-            var sliderValue = SelectorMenu.Add("selectorType", new Slider("Selector Type", 0, 0, 8));
+
+            /*
+                Selector Type
+            */
+
+            var sliderValue = SelectorMenu.Add("selectorType", new Slider("Selector Type", 0, 0, 9));
+            MenuExterno.selectorType.SelectedIndex = sliderValue.CurrentValue;
             sliderValue.OnValueChange += delegate
             {
                 sliderValue.DisplayName = "Selector Type: " + Enum.GetName(typeof(EnumSelectorType), Misc.GetSliderValue(SelectorMenu, "selectorType"));
-                MenuExterno.listBox1.SelectedIndex = Misc.GetSliderValue(SelectorMenu, "selectorType");
+                MenuExterno.selectorType.SelectedIndex = Misc.GetSliderValue(SelectorMenu, "selectorType");
             };
+
+            /*
+                Priority slider by champion
+            */
 
             var counter = 1;
             foreach (var aiHeroClient in EntityManager.Heroes.Enemies)
@@ -69,24 +93,29 @@ namespace BRSelector
                 switch (counter)
                 {
                     case 1:
-                        MenuExterno.trackBar1.Text = aiHeroClient.ChampionName;
-                        MenuExterno.trackBar1.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName);
+                        MenuExterno.trackBar1.Text = "ts" + aiHeroClient.ChampionName;
+                        MenuExterno.champion1.Text = aiHeroClient.ChampionName;
+                        MenuExterno.trackBar1.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName) - 1;
                         break;
                     case 2:
-                        MenuExterno.trackBar2.Text = aiHeroClient.ChampionName;
-                        MenuExterno.trackBar2.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName);
+                        MenuExterno.trackBar2.Text = "ts" + aiHeroClient.ChampionName;
+                        MenuExterno.champion2.Text = aiHeroClient.ChampionName;
+                        MenuExterno.trackBar2.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName) - 1;
                         break;
                     case 3:
-                        MenuExterno.trackBar3.Text = aiHeroClient.ChampionName;
-                        MenuExterno.trackBar3.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName);
+                        MenuExterno.trackBar3.Text = "ts" + aiHeroClient.ChampionName;
+                        MenuExterno.champion3.Text = aiHeroClient.ChampionName;
+                        MenuExterno.trackBar3.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName) - 1;
                         break;
                     case 4:
-                        MenuExterno.trackBar4.Text = aiHeroClient.ChampionName;
-                        MenuExterno.trackBar4.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName);
+                        MenuExterno.trackBar4.Text = "ts" + aiHeroClient.ChampionName;
+                        MenuExterno.champion4.Text = aiHeroClient.ChampionName;
+                        MenuExterno.trackBar4.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName) - 1;
                         break;
                     case 5:
-                        MenuExterno.trackBar5.Text = aiHeroClient.ChampionName;
-                        MenuExterno.trackBar5.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName);
+                        MenuExterno.trackBar5.Text = "ts" + aiHeroClient.ChampionName;
+                        MenuExterno.champion5.Text = aiHeroClient.ChampionName;
+                        MenuExterno.trackBar5.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName) - 1;
                         break;
                 }
 
@@ -94,28 +123,28 @@ namespace BRSelector
                 {
                     if (MenuExterno.trackBar1.Text == aiHeroClient.ChampionName)
                     {
-                        MenuExterno.trackBar1.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName);
+                        MenuExterno.trackBar1.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName) - 1;
                     }
                     else if (MenuExterno.trackBar2.Text == aiHeroClient.ChampionName)
                     {
-                        MenuExterno.trackBar2.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName);
+                        MenuExterno.trackBar2.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName) - 1;
                     }
                     else if (MenuExterno.trackBar3.Text == aiHeroClient.ChampionName)
                     {
-                        MenuExterno.trackBar3.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName);
+                        MenuExterno.trackBar3.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName) - 1;
                     }
                     else if (MenuExterno.trackBar4.Text == aiHeroClient.ChampionName)
                     {
-                        MenuExterno.trackBar4.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName);
+                        MenuExterno.trackBar4.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName) - 1;
                     }
                     else if (MenuExterno.trackBar5.Text == aiHeroClient.ChampionName)
                     {
-                        MenuExterno.trackBar5.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName);
+                        MenuExterno.trackBar5.Value = Misc.GetSliderValue(SelectorMenu, "ts" + aiHeroClient.ChampionName) - 1;
                     }
                 };
                 counter++;
             }
-
+            MenuExterno.Show();
         }
     }
 }

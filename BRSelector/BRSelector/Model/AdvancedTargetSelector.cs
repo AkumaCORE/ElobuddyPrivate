@@ -9,9 +9,10 @@ using SharpDX;
 
 namespace BRSelector.Model
 {
-    class TargetSelector
+    public static class AdvancedTargetSelector
     {
         public static int Mode { get; set; }
+
         internal static bool IsValidTarget(AIHeroClient target, 
             float range, 
             DamageType damageType,
@@ -24,7 +25,7 @@ namespace BRSelector.Model
                        target.Distance(
                            (from.Equals(default(Vector3)) ? ObjectManager.Player.ServerPosition : from), true) <
                        Math.Pow((range <= 0 ? ObjectManager.Player.GetAutoAttackRange(target) : range), 2) &&
-                       !Invulnerable.Check(target, damageType, ignoreShield);
+                       !Invulnerable.Check(target, damageType, ignoreShield );
             }
             catch (Exception ex)
             {
