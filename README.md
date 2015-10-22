@@ -25,3 +25,6 @@ All the addons of this GitHub are WIP or not allowed source's on Elobuddy forum 
 #### <i class="icon-folder-open"></i> Committing for other's work addon 
 
 *Never commit other's people work without notify him rightly.*
+
+
+This document still in progress...
