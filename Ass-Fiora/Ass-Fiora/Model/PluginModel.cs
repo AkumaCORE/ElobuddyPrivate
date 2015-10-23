@@ -30,6 +30,7 @@ namespace Ass_Fiora.Model
         public static Menu Menu,
             ComboMenu,
             LaneClearMenu,
+            JungleClearMenu,
             HarassMenu,
             LastHitMenu,
             MiscMenu,

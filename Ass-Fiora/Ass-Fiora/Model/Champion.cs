@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using Ass_Fiora.Controller;
 using Ass_Fiora.Model.Enum;
 using Ass_Fiora.Model.Languages;
@@ -13,6 +12,7 @@ using EloBuddy.SDK.Rendering;
 using OneForWeek.Draw.Notifications;
 using OneForWeek.Model.Notification;
 using OneForWeek.Util.Misc;
+using Color = System.Drawing.Color;
 
 namespace Ass_Fiora.Model
 {
@@ -123,27 +123,49 @@ namespace Ass_Fiora.Model
             LastHitMenu.AddGroupLabel("Q " + language.Dictionary[EnumContext.Settings]);
             LastHitMenu.Add("lhQ", new CheckBox(language.Dictionary[EnumContext.Use] + " Q", true));
             LastHitMenu.AddGroupLabel("E " + language.Dictionary[EnumContext.Settings]);
-            LastHitMenu.Add("lhE", new CheckBox(language.Dictionary[EnumContext.Use] + " E", true));
+            LastHitMenu.Add("lhW", new CheckBox(language.Dictionary[EnumContext.Use] + " W", true));
 
             LaneClearMenu = Menu.AddSubMenu(language.Dictionary[EnumContext.LaneClear] + " - " + GCharname, GCharname + "LaneClear");
             LaneClearMenu.AddGroupLabel(language.Dictionary[EnumContext.LaneClear]);
+            LaneClearMenu.Add("lcMana", new Slider(language.Dictionary[EnumContext.MinimunMana], 50, 1, 100));
             LaneClearMenu.Add("lcQ", new CheckBox(language.Dictionary[EnumContext.Use] + " Q", true));
             LaneClearMenu.Add("lcW", new CheckBox(language.Dictionary[EnumContext.Use] + " W", true));
             LaneClearMenu.Add("lcE", new CheckBox(language.Dictionary[EnumContext.Use] + " E", true));
+
+            JungleClearMenu = Menu.AddSubMenu(language.Dictionary[EnumContext.LaneClear] + " - " + GCharname, GCharname + "JungleClear");
+            JungleClearMenu.AddGroupLabel(language.Dictionary[EnumContext.LaneClear]);
+            JungleClearMenu.Add("jcMana", new Slider(language.Dictionary[EnumContext.MinimunMana], 50, 1, 100));
+            JungleClearMenu.Add("jcQ", new CheckBox(language.Dictionary[EnumContext.Use] + " Q", true));
+            JungleClearMenu.Add("jcW", new CheckBox(language.Dictionary[EnumContext.Use] + " W", true));
+            JungleClearMenu.Add("jcE", new CheckBox(language.Dictionary[EnumContext.Use] + " E", true));
         }
 
         #region Events Region
 
         public override void OnAfterAttack(AttackableUnit target, EventArgs args)
         {
-            if(ActiveMode == EnumModeManager.None) return;
+            if(Orbwalker.ActiveModesFlags == Orbwalker.ActiveModes.None) return;
 
-            if (E.IsReady() && ((Misc.IsChecked(ComboMenu, "comboE") && ActiveMode == EnumModeManager.Combo) 
-                || (Misc.IsChecked(HarassMenu, "hsE") && ActiveMode == EnumModeManager.Harass) 
-                || (Misc.IsChecked(LaneClearMenu, "lcE") && ActiveMode == EnumModeManager.LaneClear)))
+            if (E.IsReady() && ((Misc.IsChecked(ComboMenu, "comboE") && Orbwalker.ActiveModesFlags == Orbwalker.ActiveModes.Combo) 
+                || (Misc.IsChecked(HarassMenu, "hsE") && Orbwalker.ActiveModesFlags == Orbwalker.ActiveModes.Harass && ManaManager.CanUseSpell(HarassMenu, "hsMana"))
+                || (Misc.IsChecked(HarassMenu, "jcE") && Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear) && ManaManager.CanUseSpell(JungleClearMenu, "jcMana"))
+                || (Misc.IsChecked(LaneClearMenu, "lcE") && Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear) && ManaManager.CanUseSpell(LaneClearMenu, "lcMana"))))
             {
                 E.Cast();
+                Core.DelayAction(Orbwalker.ResetAutoAttack, 250);
             }
+
+            if(!ItemManager.CanUseHydra()) return;
+
+            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear) ||
+                Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass) ||
+                Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear) ||
+                Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo))
+            {
+                ItemManager.UseHydra(target);
+                Core.DelayAction(Orbwalker.ResetAutoAttack, 250);
+            }
+
         }
 
         public override void OnProcessSpell(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
@@ -153,6 +175,7 @@ namespace Ass_Fiora.Model
 
         public override void OnDraw(EventArgs args)
         {
+                
             if (Misc.IsChecked(DrawMenu, "drawDisable"))
                 return;
 

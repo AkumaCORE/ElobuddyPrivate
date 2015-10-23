@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ass_Fiora.Model;
 using EloBuddy;
 using EloBuddy.SDK;
 using SharpDX;
@@ -69,7 +66,7 @@ namespace Ass_Fiora.Controller
             return new Vector3();
         }
 
-        private static List<Vector3> UltiPassivePos(Obj_AI_Base target)
+        public static List<Vector3> UltiPassivePos(Obj_AI_Base target)
         {
             var poses = new List<Vector3>();
 
@@ -121,6 +118,12 @@ namespace Ass_Fiora.Controller
             return poses;
         }
 
+        public static bool HasUltiPassive(GameObject target)
+        {
+            return ObjectManager.Get<Obj_GeneralParticleEmitter>()
+                .Where(x => x.Name.Contains("Fiora_Base_R_Mark") || (x.Name.Contains("Fiora_Base_R") && x.Name.Contains("Timeout_FioraOnly.troy"))).Any(x => x.Position.Distance(target.Position) <= 50);
+        }
+
         public static bool HasPassive(Obj_AI_Base target)
         {
             return FioraPassiveObjects.Any(x => x.Position.Distance(target.Position) <= 50);
@@ -143,42 +146,65 @@ namespace Ass_Fiora.Controller
 
             if (passive.Name.Contains("NE"))
             {
-                var pos1 = new Vector2();
-                var pos2 = new Vector2();
-                pos1.X = position.X + 150 / (float)Math.Sqrt(2);
-                pos2.X = position.X - 150 / (float)Math.Sqrt(2);
-                pos1.Y = position.Y + 150 / (float)Math.Sqrt(2);
-                pos2.Y = position.Y + 150 / (float)Math.Sqrt(2);
+                var pos1 = new Vector2
+                {
+                    X = position.X + 150/(float) Math.Sqrt(2),
+                    Y = position.Y + 150/(float) Math.Sqrt(2)
+                };
+
+                var pos2 = new Vector2
+                {
+                    X = position.X - 150/(float) Math.Sqrt(2),
+                    Y = position.Y + 150/(float) Math.Sqrt(2)
+                };
+
                 return new List<Vector3>() { pos1.To3D(), pos2.To3D() };
             }
             if (passive.Name.Contains("SE"))
             {
-                var pos1 = new Vector2();
-                var pos2 = new Vector2();
-                pos1.X = position.X - 150 / (float)Math.Sqrt(2);
-                pos2.X = position.X - 150 / (float)Math.Sqrt(2);
-                pos1.Y = position.Y - 150 / (float)Math.Sqrt(2);
-                pos2.Y = position.Y + 150 / (float)Math.Sqrt(2);
+                var pos1 = new Vector2
+                {
+                    X = position.X - 150/(float) Math.Sqrt(2),
+                    Y = position.Y - 150/(float) Math.Sqrt(2)
+                };
+
+                var pos2 = new Vector2
+                {
+                    X = position.X - 150/(float) Math.Sqrt(2),
+                    Y = position.Y + 150/(float) Math.Sqrt(2)
+                };
+
                 return new List<Vector3>() { pos1.To3D(), pos2.To3D() };
             }
             if (passive.Name.Contains("NW"))
             {
-                var pos1 = new Vector2();
-                var pos2 = new Vector2();
-                pos1.X = position.X + 150 / (float)Math.Sqrt(2);
-                pos2.X = position.X + 150 / (float)Math.Sqrt(2);
-                pos1.Y = position.Y - 150 / (float)Math.Sqrt(2);
-                pos2.Y = position.Y + 150 / (float)Math.Sqrt(2);
+                var pos1 = new Vector2
+                {
+                    X = position.X + 150/(float) Math.Sqrt(2),
+                    Y = position.Y - 150/(float) Math.Sqrt(2)
+                };
+
+                var pos2 = new Vector2
+                {
+                    X = position.X + 150/(float) Math.Sqrt(2),
+                    Y = position.Y + 150/(float) Math.Sqrt(2)
+                };
+
                 return new List<Vector3>() { pos1.To3D(), pos2.To3D() };
             }
             if (passive.Name.Contains("SW"))
             {
-                var pos1 = new Vector2();
-                var pos2 = new Vector2();
-                pos1.X = position.X + 150 / (float)Math.Sqrt(2);
-                pos2.X = position.X - 150 / (float)Math.Sqrt(2);
-                pos1.Y = position.Y - 150 / (float)Math.Sqrt(2);
-                pos2.Y = position.Y - 150 / (float)Math.Sqrt(2);
+                var pos1 = new Vector2
+                {
+                    X = position.X + 150/(float) Math.Sqrt(2),
+                    Y = position.Y - 150/(float) Math.Sqrt(2)
+                };
+                var pos2 = new Vector2
+                {
+                    X = position.X - 150/(float) Math.Sqrt(2),
+                    Y = position.Y - 150/(float) Math.Sqrt(2)
+                };
+
                 return new List<Vector3>() { pos1.To3D(), pos2.To3D() };
             }
             return new List<Vector3>();

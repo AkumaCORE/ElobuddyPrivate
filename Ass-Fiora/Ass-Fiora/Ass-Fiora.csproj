@@ -75,6 +75,12 @@
     <Compile Include="Common\Misc\MEC.cs" />
     <Compile Include="Common\Misc\Misc.cs" />
     <Compile Include="Common\Draw\Notification.cs" />
+    <Compile Include="Controller\ItemManager.cs" />
+    <Compile Include="Controller\ManaManager.cs" />
+    <Compile Include="Controller\Modes\JungleClear.cs" />
+    <Compile Include="Controller\Modes\LastHit.cs" />
+    <Compile Include="Controller\Modes\LaneClear.cs" />
+    <Compile Include="Controller\Modes\Harass.cs" />
     <Compile Include="Controller\Modes\Combo.cs" />
     <Compile Include="Controller\RiposteManager.cs" />
     <Compile Include="Model\Enum\EnumModeManager.cs" />

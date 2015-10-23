@@ -21,10 +21,10 @@ namespace Ass_Fiora.Controller
             Modes.AddRange(new ModeBase[]
             {
                 //new PermaActive(),
-                new Combo()
-                //new Harass(),
-                //new LaneClear(),
-                //new LastHit(),
+                new Combo(),
+                new Harass(),
+                new LaneClear(),
+                new LastHit(),
                 //new Flee()
             });
 
@@ -38,6 +38,8 @@ namespace Ass_Fiora.Controller
 
         private static void OnTick(EventArgs args)
         {
+            Orbwalker.ForcedTarget = null;
+            PluginModel.ActiveMode = EnumModeManager.None;
             Modes.ForEach(mode =>
             {
                 try
@@ -45,11 +47,6 @@ namespace Ass_Fiora.Controller
                     if (mode.ShouldBeExecuted())
                     {
                         mode.Execute();
-                    }
-                    else
-                    {
-                        Orbwalker.ForcedTarget = null;
-                        PluginModel.ActiveMode = EnumModeManager.None;
                     }
                 }
                 catch (Exception e)

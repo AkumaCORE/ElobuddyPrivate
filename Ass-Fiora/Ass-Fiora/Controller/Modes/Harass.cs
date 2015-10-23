@@ -7,29 +7,27 @@ using BRSelector.Model;
 using EloBuddy;
 using EloBuddy.SDK;
 using OneForWeek.Util.Misc;
-using SharpDX;
 
 namespace Ass_Fiora.Controller.Modes
 {
-    public sealed class Combo : ModeBase
+    public sealed class Harass : ModeBase
     {
 
         public override bool ShouldBeExecuted()
         {
-            return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo);
+            return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass);
         }
 
         public override void Execute()
         {
             var q = PluginModel.Q;
             var w = PluginModel.W;
-            var r = PluginModel.R;
 
             var target = AdvancedTargetSelector.GetTarget(w.Range, DamageType.Physical);
 
             if (target == null || !target.IsValidTarget()) return;
 
-            PluginModel.ActiveMode = EnumModeManager.Combo;
+            PluginModel.ActiveMode = EnumModeManager.Harass;
 
             Orbwalker.ForcedTarget = target;
 
@@ -42,24 +40,19 @@ namespace Ass_Fiora.Controller.Modes
                 q.Cast(castpos);
             }
 
-            if (q.IsReady() && Misc.IsChecked(PluginModel.ComboMenu, "comboQ"))
+            if (q.IsReady() && Misc.IsChecked(PluginModel.HarassMenu, "hsQ") && ManaManager.CanUseSpell(PluginModel.HarassMenu, "hsMana"))
             {
                 var targetpos = Prediction.Position.PredictUnitPosition(target, 250);
 
-                if (Misc.IsChecked(PluginModel.ComboMenu, "comboQPassiveRange") && q.IsInRange(targetpos.To3D()) &&
+                if (Misc.IsChecked(PluginModel.HarassMenu, "hsQPassiveRange") && q.IsInRange(targetpos.To3D()) &&
                     PassiveController.HasPassive(target))
                 {
                     var castPos = PassiveController.PassivePosition(target);
                     var validPositions = PassiveController.PassiveRadiusPoint(target);
 
-                    if (castPos.IsValid() && castPos.Distance(Player.Instance.ServerPosition) <= 300 &&
-                        castPos.InTheCone(validPositions, castPos.To2D()))
+                    if (castPos.IsValid() && castPos.Distance(Player.Instance.ServerPosition) <= 300 && castPos.InTheCone(validPositions, castPos.To2D()))
                     {
                         Player.CastSpell(SpellSlot.Q, castPos);
-                    }
-                    else
-                    {
-                        Player.CastSpell(SpellSlot.Q, Game.CursorPos);
                     }
                 }
                 else
@@ -68,7 +61,7 @@ namespace Ass_Fiora.Controller.Modes
                 }
             }
 
-            if (w.IsReady() && Misc.IsChecked(PluginModel.ComboMenu, "comboW"))
+            if (w.IsReady() && Misc.IsChecked(PluginModel.HarassMenu, "hsW") && ManaManager.CanUseSpell(PluginModel.HarassMenu, "hsMana"))
             {
                 if (q.IsReady() || !(target.Distance(Player.Instance) > Player.Instance.GetAutoAttackRange())) return;
 
@@ -78,21 +71,6 @@ namespace Ass_Fiora.Controller.Modes
                 {
                     w.Cast(prediction.CastPosition);
                 }
-            }
-
-            if (r.IsReady() && Misc.IsChecked(PluginModel.ComboMenu, "comboR") && Player.Instance.HealthPercent < 50)
-            {
-                r.Cast(target);
-            }
-
-            if (Player.Instance.IsInAutoAttackRange(target))
-            {
-                ItemManager.UseYomu();
-            }
-
-            if (Player.Instance.HealthPercent < target.HealthPercent)
-            {
-                ItemManager.UseCastables(target);
             }
         }
     }
