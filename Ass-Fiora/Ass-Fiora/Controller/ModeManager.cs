@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ass_Fiora.Controller.Modes;
 using Ass_Fiora.Model;
+using Ass_Fiora.Model.Enum;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;

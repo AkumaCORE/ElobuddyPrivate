@@ -75,14 +75,23 @@
     <Compile Include="Common\Misc\MEC.cs" />
     <Compile Include="Common\Misc\Misc.cs" />
     <Compile Include="Common\Draw\Notification.cs" />
-    <Compile Include="Controller\Combo.cs" />
-    <Compile Include="Controller\EnumModeManager.cs" />
-    <Compile Include="Controller\ModeBase.cs" />
+    <Compile Include="Controller\Modes\Combo.cs" />
+    <Compile Include="Controller\RiposteManager.cs" />
+    <Compile Include="Model\Enum\EnumModeManager.cs" />
+    <Compile Include="Model\ModeBase.cs" />
     <Compile Include="Controller\ModeManager.cs" />
     <Compile Include="Controller\PassiveController.cs" />
     <Compile Include="Helpers\VectorHelper.cs" />
     <Compile Include="Model\Champion.cs" />
+    <Compile Include="Model\Enum\EnumContext.cs" />
+    <Compile Include="Model\Languages\Deutsch.cs" />
+    <Compile Include="Model\Languages\Espanol.cs" />
+    <Compile Include="Model\Languages\Francais.cs" />
+    <Compile Include="Model\Languages\Portugues.cs" />
+    <Compile Include="Model\Languages\English.cs" />
+    <Compile Include="Model\Enum\EnumLanguage.cs" />
     <Compile Include="Model\IChampion.cs" />
+    <Compile Include="Model\LanguageController.cs" />
     <Compile Include="Model\PluginModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,6 +114,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

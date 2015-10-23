@@ -20,7 +20,7 @@ namespace Ass_Fiora.Helpers
             return Math.Acos((a1 * a1 + c1 * c1 - b1 * b1) / (2 * a1 * c1)) * (180 / Math.PI);
         }
 
-        public static bool InTheCone(Vector3 pos, List<Vector3> poses, Vector2 targetpos)
+        public static bool InTheCone(this Vector3 pos, List<Vector3> poses, Vector2 targetpos)
         {
             var x = true;
 

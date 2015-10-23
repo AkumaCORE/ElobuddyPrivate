@@ -38,6 +38,7 @@ namespace BRSelector
                 Draw Target Checkbox
             */
 
+            DrawMenu.Add("showExternalMenu", new CheckBox("Show External Menu", true));
             var drawTarget = DrawMenu.Add("drawTarget", new CheckBox("Show target", true));
             MenuExterno.showTarget.Checked = drawTarget.CurrentValue;
             drawTarget.OnValueChange += delegate
@@ -144,7 +145,9 @@ namespace BRSelector
                 };
                 counter++;
             }
-            MenuExterno.Show();
+
+            if(Misc.IsChecked(DrawMenu, "showExternalMenu"))
+                MenuExterno.Show();
         }
     }
 }

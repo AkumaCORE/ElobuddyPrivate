@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using Ass_Fiora.Controller;
+using Ass_Fiora.Model.Enum;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Events;

@@ -12,7 +12,6 @@ namespace Ass_Fiora.Controller
 {
     public class PassiveController
     {
-
         private static readonly List<string> FioraPassiveName = new List<string>()
         {
             "Fiora_Base_Passive_NE.troy",
