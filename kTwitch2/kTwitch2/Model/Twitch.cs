@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using BRSelector;
 using EloBuddy;
 using kTwitch2.Controller;
+using kTwitch2.Helpers.DamageIndicator;
 using SharpDX;
 using SharpDX.Direct3D9;
 
@@ -16,6 +17,7 @@ namespace kTwitch2.Model
     class Twitch : Model
     {
         public static Font Font;
+        public static DamageIndicator Indicator;
         public Twitch()
         {
             Font = new Font(
@@ -37,6 +39,7 @@ namespace kTwitch2.Model
             Drawing.OnEndScene += OnDraw;
             Obj_AI_Base.OnProcessSpellCast += AiHeroClientOnOnProcessSpellCast;
             Chat.Print("KK2 passou por aqui");
+            Indicator = new DamageIndicator();
         }
 
         private void AiHeroClientOnOnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)

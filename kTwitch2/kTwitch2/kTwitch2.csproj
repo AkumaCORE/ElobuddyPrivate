@@ -79,6 +79,7 @@
     <Compile Include="Helpers\BRSelector\Selected.cs" />
     <Compile Include="Helpers\BRSelector\Selector.cs" />
     <Compile Include="Helpers\BRSelector\Targets.cs" />
+    <Compile Include="Helpers\DamageIndicator.cs" />
     <Compile Include="Helpers\DmgLib.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\MEC.cs" />
