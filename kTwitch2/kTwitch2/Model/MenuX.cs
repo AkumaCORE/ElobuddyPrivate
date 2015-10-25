@@ -10,7 +10,7 @@ namespace kTwitch2.Model
 {
     internal class MenuX : Model
     {
-        public static Slider HarassModeSlider;
+        public static Slider HarassModeSlider, SkinHackSlider;
         public static string[] hModes = {"E on 6 stacks", "E on Killable"};
 
         public static void Init()
@@ -63,9 +63,40 @@ namespace kTwitch2.Model
             JungleClearMenu.Add("juseE", new CheckBox("use E on JungleClear"));
             JungleClearMenu.Add("jMana", new Slider("Min Mana %> to JungleClear"));
 
-            /*
-            TODO menu dos item, draw, EOQ
-            */
+            /* Items */
+            ItemsMenu = TwitchMenu.AddSubMenu("Items", "Items");
+            ItemsMenu.AddGroupLabel("Items Menu");
+            ItemsMenu.AddSeparator();
+            ItemsMenu.Add("usePOT", new CheckBox("Use Potions"));
+            ItemsMenu.Add("useYoumu", new CheckBox("Use Youmuus Ghostblade"));
+            ItemsMenu.AddSeparator();
+            ItemsMenu.Add("useBTRK", new CheckBox("Use Blade of the Ruined King"));
+            ItemsMenu.Add("myHP", new Slider("My HP <% to Use BTRK", 80));
+            ItemsMenu.Add("enemyHP", new Slider("Enemy HP <% to Use BTRK", 80));
+            
+
+            /* Draws */
+            DrawingsMenu = TwitchMenu.AddSubMenu("Drawings", "Drawings");
+            DrawingsMenu.AddGroupLabel("Drawings Options");
+            DrawingsMenu.AddSeparator();
+            DrawingsMenu.Add("drawW", new CheckBox("Draw W Range"));
+            DrawingsMenu.Add("drawR", new CheckBox("Draw R Range"));
+            DrawingsMenu.AddSeparator();
+            DrawingsMenu.Add("drawTimer", new CheckBox("Draw Remaining Time of Q"));
+            DrawingsMenu.Add("drawE", new CheckBox("Draw E Damage on Enemy HPBAR"));
+
+            /* Misc */
+            MiscMenu = TwitchMenu.AddSubMenu("Misc", "Misc");
+            MiscMenu.AddGroupLabel("Misc Options");
+            MiscMenu.AddSeparator();
+            MiscMenu.Add("stealM", new CheckBox("Steal Jungle/Dragon/Baron with E"));
+            MiscMenu.AddSeparator();
+            SkinHackSlider = MiscMenu.Add("skinHack", new Slider("Choose your Skin [number]", 0, 0, 7));
+            SkinHackSlider.OnValueChange += delegate
+            {
+                _Player.SetSkinId(SkinHackSlider.CurrentValue);
+            };
+            _Player.SetSkinId(SkinHackSlider.CurrentValue);
         }
     }
 }

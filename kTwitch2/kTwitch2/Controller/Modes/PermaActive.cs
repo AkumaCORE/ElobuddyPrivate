@@ -19,11 +19,12 @@ namespace kTwitch2.Controller.Modes
 
         public override void Execute()
         {
+            var use = isChecked(MiscMenu, "stealM");
             /* Mob Steal*/
             var mob =
                 EntityManager.MinionsAndMonsters.Minions.Where(x => x.Distance(_Player) <= E.Range)
                     .OrderByDescending(x => x.Health).FirstOrDefault();
-            if (mob == null) return;
+            if (mob == null || !use) return;
             if (E.IsReady())
             {
                 if ((mob.BaseSkinName.Contains("Dragon") ||

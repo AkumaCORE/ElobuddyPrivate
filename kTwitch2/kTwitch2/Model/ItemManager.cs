@@ -21,7 +21,8 @@ namespace kTwitch2.Model
 
         public static void UseYomu()
         {
-            if (Youmu.IsOwned() && Youmu.IsReady())
+            var useYoumu = isChecked(ItemsMenu, "useYoumu");
+            if (Youmu.IsOwned() && Youmu.IsReady() && useYoumu)
             {
                 Youmu.Cast();
             }
@@ -29,6 +30,10 @@ namespace kTwitch2.Model
 
         public static void UseBtrk(AIHeroClient target)
         {
+            var useBTRK = isChecked(ItemsMenu, "useBTRK");
+            var myHP = getSliderValue(ItemsMenu, "myHP");
+            var enemyHP = getSliderValue(ItemsMenu, "enemyHP");
+            if (useBTRK && _Player.HealthPercent <= myHP && target.HealthPercent <= enemyHP)
             if (BTRK.IsOwned() || CutL.IsOwned())
             {
                 if (target == null || !target.IsValidTarget()) return;
@@ -42,8 +47,9 @@ namespace kTwitch2.Model
 
         public static void UsePotions()
         {
+            var usePOt = isChecked(ItemsMenu, "usePOT");
             if (!_Player.IsInShopRange() &&
-                !_Player.HasBuff("recall"))
+                !_Player.HasBuff("recall") && usePOt)
             {
                 if (Potion.IsReady() && !_Player.HasBuff("RegenerationPotion"))
                 {
