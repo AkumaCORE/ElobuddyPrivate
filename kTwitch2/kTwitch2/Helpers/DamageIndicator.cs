@@ -57,7 +57,7 @@ namespace kTwitch2.Helpers
             }
         }
 
-        public class DamageIndicator
+        public class DamageIndicator : Model.Model
         {
             private readonly float _barLength = 104;
             private readonly float _xOffset = -9;
@@ -102,6 +102,7 @@ namespace kTwitch2.Helpers
             private void Drawing_OnDraw(EventArgs args)
             {
                 // adiciona o check aqui
+                if (!isChecked(DrawingsMenu, "drawE")) return;
 
                 foreach (var aiHeroClient in EntityManager.Heroes.Enemies)
                 {

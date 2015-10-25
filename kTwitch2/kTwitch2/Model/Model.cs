@@ -36,7 +36,7 @@ namespace kTwitch2.Model
         /* 
         Menu
         */
-        public static Menu TwitchMenu, ComboMenu, HarassMenu, LaneClearMenu, JungleClearMenu, MiscMenu;
+        public static Menu TwitchMenu, ComboMenu, HarassMenu, LaneClearMenu, JungleClearMenu, ItemsMenu, DrawingsMenu, MiscMenu;
 
         /*
         Utils

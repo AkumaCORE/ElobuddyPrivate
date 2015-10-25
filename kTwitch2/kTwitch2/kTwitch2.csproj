@@ -83,6 +83,7 @@
     <Compile Include="Helpers\DmgLib.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\MEC.cs" />
+    <Compile Include="Model\Drawings.cs" />
     <Compile Include="Model\ItemManager.cs" />
     <Compile Include="Model\MenuX.cs" />
     <Compile Include="Model\ModeBase.cs" />
