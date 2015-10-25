@@ -23,8 +23,15 @@ namespace kTwitch2.Controller.Modes
         {
             var t = AdvancedTargetSelector.GetTarget(RActive ? R.Range : W.Range, DamageType.Physical);
             if (t == null || !t.IsValidTarget()) return;
+            var useW = isChecked(ComboMenu, "comboW");
+            var useE = isChecked(ComboMenu, "comboE");
+            var useR = isChecked(ComboMenu, "comboR");
+            var minR = getSliderValue(ComboMenu, "comboMinR");
 
-            if (W.IsReady())
+            ItemManager.UseYomu();
+            ItemManager.UseBtrk(t);
+
+            if (W.IsReady() && useW)
             {
                 var pred = W.GetPrediction(t);
                 if (pred.HitChance >= HitChance.High)
@@ -33,7 +40,7 @@ namespace kTwitch2.Controller.Modes
                 }
             }
 
-            if (E.IsReady())
+            if (E.IsReady() && useE)
             {
                 foreach (var enemy in EntityManager.Heroes.Enemies.Where(e => e.IsValidTarget(E.Range) && e.IsEnemy &&
                                                                               e.IsVisible && !e.IsZombie && !e.IsDead &&
@@ -45,11 +52,8 @@ namespace kTwitch2.Controller.Modes
                     }
                 }
             }
-
-            ItemManager.UseYomu();
-            ItemManager.UseBtrk(t);
-
-            if (R.IsReady() && _Player.CountEnemiesInRange(R.Range) >= 1)
+            
+            if (R.IsReady() && _Player.CountEnemiesInRange(R.Range) >= minR && useR)
             {
                 R.Cast();
             }

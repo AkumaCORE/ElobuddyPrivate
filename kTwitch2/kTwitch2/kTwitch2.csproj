@@ -84,6 +84,7 @@
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\MEC.cs" />
     <Compile Include="Model\ItemManager.cs" />
+    <Compile Include="Model\MenuX.cs" />
     <Compile Include="Model\ModeBase.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\Spells.cs" />

@@ -10,17 +10,13 @@ namespace kTwitch2.Model
 {
     internal class ItemManager : Model
     {
-        public ItemManager()
-        {
-            BTRK = new Item((int) ItemId.Blade_of_the_Ruined_King, 450);
-            CutL = new Item((int) ItemId.Bilgewater_Cutlass, 450);
-            Youmu = new Item((int) ItemId.Youmuus_Ghostblade);
-            Potion = new Item((int) ItemId.Health_Potion);
-        }
 
         public static void Init()
         {
-            
+            BTRK = new Item((int)ItemId.Blade_of_the_Ruined_King, 450);
+            CutL = new Item((int)ItemId.Bilgewater_Cutlass, 450);
+            Youmu = new Item((int)ItemId.Youmuus_Ghostblade);
+            Potion = new Item((int)ItemId.Health_Potion);
         }
 
         public static void UseYomu()
@@ -47,7 +43,7 @@ namespace kTwitch2.Model
         public static void UsePotions()
         {
             if (!_Player.IsInShopRange() &&
-                !_Player.HasBuff("recall") && !Potion.IsOwned())
+                !_Player.HasBuff("recall"))
             {
                 if (Potion.IsReady() && !_Player.HasBuff("RegenerationPotion"))
                 {

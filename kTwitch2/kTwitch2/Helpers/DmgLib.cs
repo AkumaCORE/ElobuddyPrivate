@@ -14,7 +14,7 @@ namespace kTwitch2.Helpers
         {
             var buff = target.HasBuff("twitchdeadlyvenom");
             var bc = target.GetBuffCount("twitchdeadlyvenom");
-            if (!buff) return 0f;
+            if (!buff || !E.IsLearned) return 0f;
             return  _Player.CalculateDamageOnUnit(target, DamageType.True,(float)
                 (new[] { 15, 20, 25, 30, 35 }[E.Level -1] * bc +
                 0.2 * _Player.FlatMagicDamageMod + 

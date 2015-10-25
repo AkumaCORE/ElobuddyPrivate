@@ -7,11 +7,12 @@ using BRSelector.Model;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
+using kTwitch2.Helpers;
 using kTwitch2.Model;
 
 namespace kTwitch2.Controller.Modes
 {
-    class Harass : ModeBase
+    internal class Harass : ModeBase
     {
         public override bool ShouldBeExecuted()
         {
@@ -22,8 +23,13 @@ namespace kTwitch2.Controller.Modes
         {
             var t = AdvancedTargetSelector.GetTarget(RActive ? R.Range : W.Range, DamageType.Physical);
             if (t == null || !t.IsValidTarget()) return;
+            var useW = isChecked(HarassMenu, "harassW");
+            var useE = isChecked(HarassMenu, "harassE");
+            var hMode = getSliderValue(HarassMenu, "hMode");
+            var minMana = getSliderValue(HarassMenu, "harassMana");
 
-            if (W.IsReady())
+            if (W.IsReady() && useW &&
+                _Player.ManaPercent >= minMana)
             {
                 var pred = W.GetPrediction(t);
                 if (pred.HitChance >= HitChance.High)
@@ -32,13 +38,31 @@ namespace kTwitch2.Controller.Modes
                 }
             }
 
-            if (E.IsReady())
+            if (E.IsReady() && useE)
             {
-                var buffcount = t.GetBuffCount("twitchdeadlyvenom");
-                if (buffcount >= 6)
+                switch (hMode)
                 {
-                    E.Cast();
+                    case 0:
+                        if (CanCastE)
+                        {
+                            E.Cast();
+                        }
+                        return;
+                    case 1:
+                        foreach (
+                            var enemy in
+                                EntityManager.Heroes.Enemies.Where(e => e.IsValidTarget(E.Range) && e.IsEnemy &&
+                                                                        e.IsVisible && !e.IsZombie && !e.IsDead &&
+                                                                        e.HasBuff("twitchdeadlyvenom")))
+                        {
+                            if (DmgLib.EDamage(enemy) >= enemy.Health)
+                            {
+                                E.Cast();
+                            }
+                        }
+                        return;
                 }
+
             }
         }
     }
