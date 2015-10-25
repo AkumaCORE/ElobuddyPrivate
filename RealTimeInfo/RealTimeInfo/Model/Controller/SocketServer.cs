@@ -21,6 +21,7 @@ namespace RealTimeInfo.Model.Controller
         public StringBuilder sb = new StringBuilder();
     }
 
+
     public class AsynchronousSocketListener
     {
         // Thread signal.
@@ -28,6 +29,19 @@ namespace RealTimeInfo.Model.Controller
 
         public AsynchronousSocketListener()
         {
+        }
+
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("Local IP Address Not Found!");
         }
 
         public static void StartListening()
@@ -38,7 +52,7 @@ namespace RealTimeInfo.Model.Controller
             // Establish the local endpoint for the socket.
             // The DNS name of the computer
             // running the listener is "host.contoso.com".
-            IPHostEntry ipHostInfo = Dns.GetHostEntry("127.0.0.1");
+            IPHostEntry ipHostInfo = Dns.GetHostEntry(GetLocalIPAddress());
             IPAddress ipAddress = ipHostInfo.AddressList[0];
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 8080);
 
