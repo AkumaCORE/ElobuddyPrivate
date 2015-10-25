@@ -23,14 +23,14 @@ namespace RealTimeInfo.Model.ServerModel
 
         private void PlayersDamageListFill()
         {
-            foreach (var hero in Enemies)
+            foreach (var hero in EntityManager.Heroes.AllHeroes)
             {
-                PlayersDamage.Add(new PlayerDamage(hero.ChampionName, hero.TotalAttackDamage + hero.TotalMagicalDamage));
-            }
-
-            foreach (var hero in Allies)
-            {
-                PlayersDamage.Add(new PlayerDamage(hero.ChampionName, hero.TotalAttackDamage + hero.TotalMagicalDamage));
+                PlayersDamage.Add(new PlayerDamage(hero.ChampionName,
+                    hero.Level,
+                    hero.GoldTotal,
+                    hero.MagicDamageDealtPlayer + hero.PhysicalDamageDealtPlayer,
+                    hero.PhysicalDamageDealtPlayer,
+                    hero.MagicDamageDealtPlayer));
             }
         }
 

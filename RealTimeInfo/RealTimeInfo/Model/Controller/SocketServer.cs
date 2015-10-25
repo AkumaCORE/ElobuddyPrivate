@@ -38,9 +38,9 @@ namespace RealTimeInfo.Model.Controller
             // Establish the local endpoint for the socket.
             // The DNS name of the computer
             // running the listener is "host.contoso.com".
-            IPHostEntry ipHostInfo = Dns.Resolve("localhost");
+            IPHostEntry ipHostInfo = Dns.GetHostEntry("192.168.25.30");
             IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 8080);
 
             // Create a TCP/IP socket.
             Socket listener = new Socket(AddressFamily.InterNetwork,
@@ -121,8 +121,7 @@ namespace RealTimeInfo.Model.Controller
 
                     Console.WriteLine("Read {0} bytes from socket. \n Request : {1}",
                         content.Length, content);
-                    Console.WriteLine("Returnd {0}",
-                        json);
+                    //Console.WriteLine("Returnd {0}", json);
                     // Echo the data back to the client.
                     Send(handler, json);
                 }
@@ -154,7 +153,7 @@ namespace RealTimeInfo.Model.Controller
 
                 // Complete sending the data to the remote device.
                 int bytesSent = handler.EndSend(ar);
-                Console.WriteLine("Sent {0} bytes to client.", bytesSent);
+                //Console.WriteLine("Sent {0} bytes to client.", bytesSent);
 
                 handler.Shutdown(SocketShutdown.Both);
                 handler.Close();
