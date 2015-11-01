@@ -12,11 +12,11 @@ using Veigar.Model;
 
 namespace Veigar.Controller.Modes
 {
-    internal class Combo : ModeBase
+    class Harass : ModeBase
     {
         public override bool ShouldBeExecuted()
         {
-            return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo);
+            return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass);
         }
 
         public override void Execute()
@@ -27,15 +27,14 @@ namespace Veigar.Controller.Modes
 
             Orbwalker.ForcedTarget = t;
 
-            if (E.IsReady() && MenuX.Modes.Combo.UseE)
+            if (E.IsReady() && MenuX.Modes.Harass.UseE && MenuX.Modes.Harass.MinMana <= _Player.ManaPercent)
             {
                 var pred = E.GetPrediction(t);
                 var unit = pred.UnitPosition;
                 var okay = _Player.Distance(unit) <=
-                           E.Range + Misc.GetArrivalTime(_Player.Distance(unit), E.CastDelay, E.Speed)*t.MoveSpeed;
-                if (okay)
+                           E.Range + Misc.GetArrivalTime(_Player.Distance(unit), E.CastDelay, E.Speed) * t.MoveSpeed;
                 {
-                    switch (MenuX.Modes.Combo.ModeE)
+                    switch (MenuX.Modes.Harass.ModeE)
                     {
                         case 0:
                             E.Cast(pred.CastPosition);
@@ -48,14 +47,13 @@ namespace Veigar.Controller.Modes
                 }
             }
 
-            if (Q.IsReady() && MenuX.Modes.Combo.UseQ)
+            if (Q.IsReady() && MenuX.Modes.Harass.UseQ && MenuX.Modes.Harass.MinMana <= _Player.ManaPercent)
             {
                 var pred = Q.GetPrediction(t);
                 if (pred.HitChancePercent >= 70)
                     Q.Cast(pred.CastPosition);
-            }
-
-            if (W.IsReady() && MenuX.Modes.Combo.UseW)
+           }
+            if (W.IsReady() && MenuX.Modes.Harass.UseW && MenuX.Modes.Harass.MinMana <= _Player.ManaPercent)
             {
                 var pred = W.GetPrediction(t);
                 if (pred.HitChance >= HitChance.Immobile)
@@ -64,21 +62,6 @@ namespace Veigar.Controller.Modes
                     W.Cast(pred.CastPosition);
             }
 
-
-
-            if (R.IsReady() && MenuX.Modes.Combo.UseR)
-            {
-                if (DamageLib.RDamage(t) >= t.Health)
-                {
-                    Player.CastSpell(SpellSlot.R, t);
-                }
-            }
-
-            if (_Player.GetSummonerSpellDamage(t, DamageLibrary.SummonerSpells.Ignite) >= t.Health && MenuX.Modes.Combo.UseIg &&
-                        _Player.Distance(t) <= 0x258)
-            {
-                _Player.Spellbook.CastSpell(Ignite, t);
-            }
         }
     }
 }

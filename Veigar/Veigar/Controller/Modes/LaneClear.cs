@@ -22,18 +22,20 @@ namespace Veigar.Controller.Modes
                 EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, _Player.Position, Q.Range).OrderBy(x => x.Health);
 
 
-            if (W.IsReady())
+            if (W.IsReady() && MenuX.Modes.LaneClear.UseW &&
+                _Player.ManaPercent >= MenuX.Modes.LaneClear.MinMana)
             {
                 var wminions = Misc.GetBestCircularFarmLocation(minions.OrderByDescending(x => x.Health)
-                    .Select(xm => xm.ServerPosition.To2D()).ToList(),
+                   .Select(xm => xm.ServerPosition.To2D()).ToList(),
                     W.Width, W.Range);
-                if (wminions.MinionsHit >= 2)
+                if (wminions.MinionsHit >= MenuX.Modes.LaneClear.MinMinion)
                 {
                     W.Cast(wminions.Position.To3D());
                 }
             }
 
-            if (Q.IsReady())
+            if (Q.IsReady() && MenuX.Modes.LaneClear.UseQ &&
+                _Player.ManaPercent >= MenuX.Modes.LaneClear.MinMana)
             {
                 var qminions = Misc.GetBestLineFarmLocation(minions
                     .Where(x => DamageLib.QDamage(x) >= x.Health)

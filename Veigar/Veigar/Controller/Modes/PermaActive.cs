@@ -21,7 +21,7 @@ namespace Veigar.Controller.Modes
         {
             if (Q.IsReady() &&
                 (!Orbwalker.IsAutoAttacking || !Orbwalker.CanAutoAttack) &&
-                _Player.ManaPercent >= 20)
+                _Player.ManaPercent >= MenuX.AutoQ.MinMana && MenuX.AutoQ.UseQ && MenuX.AutoQ.BindQ)
             {
                 var mFarm =
                     Misc.GetBestLineFarmLocation(

@@ -25,10 +25,10 @@ namespace Veigar.Controller
             {
                  new Combo(),
                  new LastHit(), 
-                // new Harass(),
-                 new LaneClear()
+                 new Harass(),
+                 new LaneClear(),
                 // new JungleClear(),
-                //new PermaActive()
+                new PermaActive()
             });
             Game.OnTick += GameOnOnTick;
         }

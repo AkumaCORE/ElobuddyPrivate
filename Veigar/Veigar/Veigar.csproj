@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Controller\ModeManager.cs" />
     <Compile Include="Controller\Modes\Combo.cs" />
+    <Compile Include="Controller\Modes\Harass.cs" />
     <Compile Include="Controller\Modes\LaneClear.cs" />
     <Compile Include="Controller\Modes\LastHit.cs" />
     <Compile Include="Controller\Modes\PermaActive.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Helpers\DamageLib.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\MEC.cs" />
+    <Compile Include="Model\Menu.cs" />
     <Compile Include="Model\ModeBase.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\Spells.cs" />
